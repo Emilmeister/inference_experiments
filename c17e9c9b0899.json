@@ -1,0 +1,157 @@
+{
+  "experiment_id": "c17e9c9b0899",
+  "timestamp": "2026-04-22T15:37:19.228440+00:00",
+  "engine": "vllm",
+  "model": "Qwen/Qwen3.5-9B",
+  "hardware": {
+    "gpus": [
+      {
+        "index": 0,
+        "name": "NVIDIA A100-PCIE-40GB",
+        "vram_total_mb": 40960,
+        "vram_free_mb": 40339
+      }
+    ],
+    "gpu_count": 1,
+    "nvlink_available": true,
+    "model_name": "Qwen/Qwen3.5-9B",
+    "model_size_params": null,
+    "model_architecture": "qwen3_5",
+    "model_max_context": 4096,
+    "available_engines": [
+      "vllm",
+      "sglang"
+    ]
+  },
+  "config": {
+    "engine": "vllm",
+    "experiment_id": "c17e9c9b0899",
+    "tensor_parallel_size": 1,
+    "pipeline_parallel_size": 1,
+    "data_parallel_size": 1,
+    "max_model_len": 4096,
+    "gpu_memory_utilization": 0.9,
+    "mem_fraction_static": null,
+    "max_num_seqs": 256,
+    "max_running_requests": null,
+    "max_num_batched_tokens": null,
+    "max_prefill_tokens": null,
+    "scheduling_policy": "fcfs",
+    "quantization": null,
+    "dtype": "auto",
+    "kv_cache_dtype": "auto",
+    "enable_chunked_prefill": false,
+    "chunked_prefill_size": null,
+    "enable_prefix_caching": false,
+    "enforce_eager": false,
+    "speculative_algorithm": null,
+    "speculative_draft_model": null,
+    "speculative_num_steps": null,
+    "num_continuous_decode_steps": 1,
+    "dp_size": null,
+    "rationale": "First baseline experiment: vLLM with default parameters and TP=1 to establish a performance reference point before exploring optimizations."
+  },
+  "status": "failed",
+  "error": "Health check timed out\nLogs: WARNING 04-22 15:32:33 [argparse_utils.py:191] With `vllm serve`, you should provide the model as a positional argument or in a config file instead of via the `--model` option. The `--model` option will be removed in v0.13.\n(APIServer pid=1) INFO 04-22 15:32:33 [utils.py:299] \r\n(APIServer pid=1) INFO 04-22 15:32:33 [utils.py:299]        █     █     █▄   ▄█\r\n(APIServer pid=1) INFO 04-22 15:32:33 [utils.py:299]  ▄▄ ▄█ █     █     █ ▀▄▀ █  version 0.19.1\r\n(APIServer pid=1) INFO 04-22 15:32:33 [utils.py:299]   █▄█▀ █     █     █     █  model   Qwen/Qwen3.5-9B\r\n(APIServer pid=1) INFO 04-22 15:32:33 [utils.py:299]    ▀▀  ▀▀▀▀▀ ▀▀▀▀▀ ▀     ▀\r\n(APIServer pid=1) INFO 04-22 15:32:33 [utils.py:299] \n(APIServer pid=1) INFO 04-22 15:32:33 [utils.py:233] non-default args: {'model_tag': 'Qwen/Qwen3.5-9B', 'host': '0.0.0.0', 'model': 'Qwen/Qwen3.5-9B', 'max_model_len': 4096, 'max_num_seqs': 256}\n(APIServer pid=1) INFO 04-22 15:32:41 [model.py:549] Resolved architecture: Qwen3_5ForConditionalGeneration",
+  "benchmark": {
+    "ttft_ms": {
+      "mean": 0.0,
+      "median": 0.0,
+      "p75": 0.0,
+      "p90": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "tpot_ms": {
+      "mean": 0.0,
+      "median": 0.0,
+      "p75": 0.0,
+      "p90": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "itl_ms": {
+      "mean": 0.0,
+      "median": 0.0,
+      "p75": 0.0,
+      "p90": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "e2e_latency_ms": {
+      "mean": 0.0,
+      "median": 0.0,
+      "p75": 0.0,
+      "p90": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "peak_requests_per_sec": 0.0,
+    "peak_output_tokens_per_sec": 0.0,
+    "peak_total_tokens_per_sec": 0.0,
+    "low_concurrency_ttft_p95_ms": 0.0,
+    "low_concurrency_tpot_p95_ms": 0.0,
+    "queue_time_ms": {
+      "mean": 0.0,
+      "median": 0.0,
+      "p75": 0.0,
+      "p90": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "prefill_time_ms": {
+      "mean": 0.0,
+      "median": 0.0,
+      "p75": 0.0,
+      "p90": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "decode_time_ms": {
+      "mean": 0.0,
+      "median": 0.0,
+      "p75": 0.0,
+      "p90": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "kv_cache_usage_percent": 0.0,
+    "prefix_cache_hit_rate": 0.0,
+    "gpu_utilization_percent": [],
+    "gpu_memory_used_mb": [],
+    "gpu_power_draw_watts": [],
+    "gpu_temperature_celsius": [],
+    "concurrency_results": []
+  },
+  "smoke_tests": {
+    "tool_calling": false,
+    "tool_calling_detail": "",
+    "json_mode": false,
+    "json_mode_detail": "",
+    "json_schema": false,
+    "json_schema_detail": ""
+  },
+  "llm_commentary": "",
+  "optimization_classification": "none",
+  "scores": {
+    "throughput_score": 0.0,
+    "latency_score": 0.0,
+    "balanced_score": 0.0,
+    "is_pareto_optimal": false
+  },
+  "duration_seconds": 312.9493820667267
+}
