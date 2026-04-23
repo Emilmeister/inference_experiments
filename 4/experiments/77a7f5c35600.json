@@ -1,0 +1,1154 @@
+{
+  "experiment_id": "77a7f5c35600",
+  "timestamp": "2026-04-23T10:03:09.077681+00:00",
+  "engine": "vllm",
+  "model": "Qwen/Qwen3.5-9B",
+  "hardware": {
+    "gpus": [
+      {
+        "index": 0,
+        "name": "NVIDIA A100-PCIE-40GB",
+        "vram_total_mb": 40960,
+        "vram_free_mb": 40339
+      }
+    ],
+    "gpu_count": 1,
+    "nvlink_available": true,
+    "model_name": "Qwen/Qwen3.5-9B",
+    "model_size_params": null,
+    "model_architecture": "qwen3_5",
+    "model_max_context": 4096,
+    "available_engines": [
+      "vllm",
+      "sglang"
+    ]
+  },
+  "config": {
+    "engine": "vllm",
+    "experiment_id": "77a7f5c35600",
+    "tensor_parallel_size": 1,
+    "pipeline_parallel_size": 1,
+    "data_parallel_size": 1,
+    "max_model_len": 4096,
+    "gpu_memory_utilization": 0.9,
+    "mem_fraction_static": null,
+    "max_num_seqs": 256,
+    "max_running_requests": null,
+    "max_num_batched_tokens": null,
+    "max_prefill_tokens": null,
+    "scheduling_policy": "fcfs",
+    "quantization": null,
+    "dtype": "auto",
+    "kv_cache_dtype": "auto",
+    "enable_chunked_prefill": false,
+    "chunked_prefill_size": null,
+    "enable_prefix_caching": false,
+    "enforce_eager": false,
+    "speculative_algorithm": null,
+    "speculative_draft_model": null,
+    "speculative_num_steps": null,
+    "num_continuous_decode_steps": 1,
+    "dp_size": 1,
+    "enable_auto_tool_choice": true,
+    "tool_call_parser": null,
+    "reasoning_parser": null,
+    "rationale": "Testing vLLM baseline with language-model-only optimization as requested by user. Previous SGLang experiments failed, so switching to vLLM for exploration. Language-model-only can improve performance by removing vision components."
+  },
+  "status": "success",
+  "error": null,
+  "benchmark": {
+    "ttft_ms": {
+      "mean": 0.0,
+      "median": 0.0,
+      "p75": 0.0,
+      "p90": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "tpot_ms": {
+      "mean": 0.0,
+      "median": 0.0,
+      "p75": 0.0,
+      "p90": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "itl_ms": {
+      "mean": 0.0,
+      "median": 0.0,
+      "p75": 0.0,
+      "p90": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "e2e_latency_ms": {
+      "mean": 3636.720819176202,
+      "median": 3606.9659889908507,
+      "p75": 3630.7446350110695,
+      "p90": 3659.268040995812,
+      "p95": 4120.353742997395,
+      "p99": 4120.353742997395,
+      "min": 3573.903555996367,
+      "max": 4120.353742997395
+    },
+    "peak_requests_per_sec": 0.27496954264317097,
+    "peak_output_tokens_per_sec": 0.0,
+    "peak_total_tokens_per_sec": 39.59561414061662,
+    "low_concurrency_ttft_p95_ms": 0.0,
+    "low_concurrency_tpot_p95_ms": 0.0,
+    "queue_time_ms": {
+      "mean": 0.0,
+      "median": 0.0,
+      "p75": 0.0,
+      "p90": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "prefill_time_ms": {
+      "mean": 0.0,
+      "median": 0.0,
+      "p75": 0.0,
+      "p90": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "decode_time_ms": {
+      "mean": 0.0,
+      "median": 0.0,
+      "p75": 0.0,
+      "p90": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "kv_cache_usage_percent": 0.0,
+    "prefix_cache_hit_rate": 0.0,
+    "gpu_utilization_percent": [
+      96.86131386861314
+    ],
+    "gpu_memory_used_mb": [
+      39872.0
+    ],
+    "gpu_power_draw_watts": [
+      244.2839051094889
+    ],
+    "gpu_temperature_celsius": [
+      69.0
+    ],
+    "concurrency_results": [
+      {
+        "concurrency": 1,
+        "prompt_length": 128,
+        "max_output_tokens": 256,
+        "num_requests": 17,
+        "ttft_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "tpot_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "itl_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "e2e_latency_ms": {
+          "mean": 3636.720819176202,
+          "median": 3606.9659889908507,
+          "p75": 3630.7446350110695,
+          "p90": 3659.268040995812,
+          "p95": 4120.353742997395,
+          "p99": 4120.353742997395,
+          "min": 3573.903555996367,
+          "max": 4120.353742997395
+        },
+        "requests_per_sec": 0.27496954264317097,
+        "input_tokens_per_sec": 39.59561414061662,
+        "output_tokens_per_sec": 0.0,
+        "total_tokens_per_sec": 39.59561414061662,
+        "queue_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "prefill_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "decode_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "errors": 0,
+        "error_details": []
+      },
+      {
+        "concurrency": 1,
+        "prompt_length": 512,
+        "max_output_tokens": 256,
+        "num_requests": 17,
+        "ttft_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "tpot_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "itl_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "e2e_latency_ms": {
+          "mean": 3681.488654468387,
+          "median": 3667.161189005128,
+          "p75": 3713.0220830003964,
+          "p90": 3768.2319399900734,
+          "p95": 3912.883397002588,
+          "p99": 3912.883397002588,
+          "min": 3598.0078739958117,
+          "max": 3912.883397002588
+        },
+        "requests_per_sec": 0.27162589641092516,
+        "input_tokens_per_sec": 143.4184733049685,
+        "output_tokens_per_sec": 0.0,
+        "total_tokens_per_sec": 143.4184733049685,
+        "queue_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "prefill_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "decode_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "errors": 0,
+        "error_details": []
+      },
+      {
+        "concurrency": 1,
+        "prompt_length": 2048,
+        "max_output_tokens": 256,
+        "num_requests": 16,
+        "ttft_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "tpot_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "itl_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "e2e_latency_ms": {
+          "mean": 3876.2404825592967,
+          "median": 3764.612490995205,
+          "p75": 3895.371808001073,
+          "p90": 4484.6707209944725,
+          "p95": 4728.3304699958535,
+          "p99": 4728.3304699958535,
+          "min": 3673.631112993462,
+          "max": 4728.3304699958535
+        },
+        "requests_per_sec": 0.25797975845635907,
+        "input_tokens_per_sec": 532.4702214539251,
+        "output_tokens_per_sec": 0.0,
+        "total_tokens_per_sec": 532.4702214539251,
+        "queue_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "prefill_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "decode_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "errors": 0,
+        "error_details": []
+      },
+      {
+        "concurrency": 4,
+        "prompt_length": 512,
+        "max_output_tokens": 256,
+        "num_requests": 64,
+        "ttft_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "tpot_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "itl_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "e2e_latency_ms": {
+          "mean": 3829.3715886104565,
+          "median": 3754.9268529983237,
+          "p75": 3860.6983389909146,
+          "p90": 4054.7466079879086,
+          "p95": 4232.899146009004,
+          "p99": 4243.7417799956165,
+          "min": 3725.2727530139964,
+          "max": 4243.7417799956165
+        },
+        "requests_per_sec": 1.0444594850991367,
+        "input_tokens_per_sec": 551.4746081323442,
+        "output_tokens_per_sec": 0.0,
+        "total_tokens_per_sec": 551.4746081323442,
+        "queue_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "prefill_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "decode_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "errors": 0,
+        "error_details": []
+      },
+      {
+        "concurrency": 4,
+        "prompt_length": 2048,
+        "max_output_tokens": 256,
+        "num_requests": 60,
+        "ttft_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "tpot_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "itl_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "e2e_latency_ms": {
+          "mean": 4173.167231184682,
+          "median": 4098.47407999041,
+          "p75": 4327.282803002163,
+          "p90": 4456.289086010656,
+          "p95": 4504.973549002898,
+          "p99": 4518.485050008167,
+          "min": 3949.9959879904054,
+          "max": 4518.485050008167
+        },
+        "requests_per_sec": 0.9581698771377455,
+        "input_tokens_per_sec": 1977.6626264123067,
+        "output_tokens_per_sec": 0.0,
+        "total_tokens_per_sec": 1977.6626264123067,
+        "queue_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "prefill_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "decode_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "errors": 0,
+        "error_details": []
+      },
+      {
+        "concurrency": 16,
+        "prompt_length": 512,
+        "max_output_tokens": 256,
+        "num_requests": 224,
+        "ttft_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "tpot_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "itl_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "e2e_latency_ms": {
+          "mean": 4484.064247410321,
+          "median": 4419.9915019999025,
+          "p75": 4437.234494995209,
+          "p90": 4617.394435001188,
+          "p95": 5148.081665989594,
+          "p99": 5157.567645001109,
+          "min": 4284.250423996127,
+          "max": 5157.690968000679
+        },
+        "requests_per_sec": 3.566785944915234,
+        "input_tokens_per_sec": 1883.2629789152436,
+        "output_tokens_per_sec": 0.0,
+        "total_tokens_per_sec": 1883.2629789152436,
+        "queue_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "prefill_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "decode_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "errors": 0,
+        "error_details": []
+      },
+      {
+        "concurrency": 16,
+        "prompt_length": 2048,
+        "max_output_tokens": 256,
+        "num_requests": 175,
+        "ttft_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "tpot_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "itl_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "e2e_latency_ms": {
+          "mean": 5864.760605114362,
+          "median": 5803.045776003273,
+          "p75": 6047.775315993931,
+          "p90": 6525.428548993659,
+          "p95": 6625.410470995121,
+          "p99": 6803.093700000318,
+          "min": 4551.826741997502,
+          "max": 6804.273264002404
+        },
+        "requests_per_sec": 2.7129383663843907,
+        "input_tokens_per_sec": 5599.504788217382,
+        "output_tokens_per_sec": 0.0,
+        "total_tokens_per_sec": 5599.504788217382,
+        "queue_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "prefill_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "decode_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "errors": 0,
+        "error_details": []
+      },
+      {
+        "concurrency": 64,
+        "prompt_length": 512,
+        "max_output_tokens": 256,
+        "num_requests": 576,
+        "ttft_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "tpot_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "itl_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "e2e_latency_ms": {
+          "mean": 7293.380325217634,
+          "median": 7251.815013994928,
+          "p75": 7351.539156006766,
+          "p90": 7462.498018008773,
+          "p95": 8085.781390996999,
+          "p99": 8667.118913988816,
+          "min": 5936.8590530066285,
+          "max": 8862.57775100239
+        },
+        "requests_per_sec": 8.762949271924455,
+        "input_tokens_per_sec": 4626.837215576112,
+        "output_tokens_per_sec": 0.0,
+        "total_tokens_per_sec": 4626.837215576112,
+        "queue_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "prefill_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "decode_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "errors": 0,
+        "error_details": []
+      },
+      {
+        "concurrency": 64,
+        "prompt_length": 2048,
+        "max_output_tokens": 256,
+        "num_requests": 314,
+        "ttft_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "tpot_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "itl_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "e2e_latency_ms": {
+          "mean": 13298.678519987563,
+          "median": 13651.821628998732,
+          "p75": 14268.925714990473,
+          "p90": 15657.853056996828,
+          "p95": 17708.135035005398,
+          "p99": 19136.88230299158,
+          "min": 6093.7214129953645,
+          "max": 19554.53089000366
+        },
+        "requests_per_sec": 4.754563347139028,
+        "input_tokens_per_sec": 9813.418748494953,
+        "output_tokens_per_sec": 0.0,
+        "total_tokens_per_sec": 9813.418748494953,
+        "queue_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "prefill_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "decode_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "errors": 0,
+        "error_details": []
+      },
+      {
+        "concurrency": 128,
+        "prompt_length": 512,
+        "max_output_tokens": 256,
+        "num_requests": 702,
+        "ttft_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "tpot_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "itl_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "e2e_latency_ms": {
+          "mean": 11513.613200365955,
+          "median": 11786.607442991226,
+          "p75": 11901.533911994193,
+          "p90": 12668.784790002974,
+          "p95": 14005.312527006026,
+          "p99": 14904.293843996129,
+          "min": 5958.826927002519,
+          "max": 15128.910137005732
+        },
+        "requests_per_sec": 10.648543458766115,
+        "input_tokens_per_sec": 5622.430946228508,
+        "output_tokens_per_sec": 0.0,
+        "total_tokens_per_sec": 5622.430946228508,
+        "queue_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "prefill_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "decode_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "errors": 0,
+        "error_details": []
+      },
+      {
+        "concurrency": 256,
+        "prompt_length": 512,
+        "max_output_tokens": 256,
+        "num_requests": 699,
+        "ttft_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "tpot_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "itl_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "e2e_latency_ms": {
+          "mean": 26323.872029857073,
+          "median": 25698.695824001334,
+          "p75": 28135.90541499434,
+          "p90": 32742.9948420031,
+          "p95": 35364.35312300455,
+          "p99": 47396.94919499743,
+          "min": 15224.148242996307,
+          "max": 47489.860765999765
+        },
+        "requests_per_sec": 9.305406422177523,
+        "input_tokens_per_sec": 4913.2545909097325,
+        "output_tokens_per_sec": 0.0,
+        "total_tokens_per_sec": 4913.2545909097325,
+        "queue_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "prefill_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "decode_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "errors": 0,
+        "error_details": []
+      },
+      {
+        "concurrency": 512,
+        "prompt_length": 512,
+        "max_output_tokens": 256,
+        "num_requests": 954,
+        "ttft_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "tpot_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "itl_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "e2e_latency_ms": {
+          "mean": 49060.268216457895,
+          "median": 53455.721955004265,
+          "p75": 58116.10407498665,
+          "p90": 65022.651847000816,
+          "p95": 67185.55599999672,
+          "p99": 77156.54745299253,
+          "min": 19806.51955900248,
+          "max": 77498.77930199727
+        },
+        "requests_per_sec": 8.838603231925903,
+        "input_tokens_per_sec": 4666.782506456877,
+        "output_tokens_per_sec": 0.0,
+        "total_tokens_per_sec": 4666.782506456877,
+        "queue_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "prefill_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "decode_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "errors": 0,
+        "error_details": []
+      }
+    ]
+  },
+  "smoke_tests": {
+    "tool_calling": true,
+    "tool_calling_detail": "PASS: tool_calls with get_weather(city=Moscow)",
+    "json_mode": false,
+    "json_mode_detail": "Invalid JSON: Expecting property name enclosed in double quotes: line 8 column 6 (char 81)",
+    "json_schema": false,
+    "json_schema_detail": "ERROR: the JSON object must be str, bytes or bytearray, not NoneType"
+  },
+  "llm_commentary": "The vLLM baseline experiment failed to produce any throughput or latency metrics, indicating a fundamental issue with the configuration or environment. While tool calling passed, JSON mode failed, suggesting incomplete feature support. This experiment provides no meaningful performance data compared to historical SGLang attempts.",
+  "optimization_classification": "none",
+  "scores": {
+    "throughput_score": 0.0,
+    "latency_score": 0.0,
+    "balanced_score": 0.0,
+    "is_pareto_optimal": false
+  },
+  "docker_command": "docker run --name bench-vllm-77a7f5c35600 --gpus all --shm-size 16g --network host -v /root/.cache/huggingface:/root/.cache/huggingface -d --rm vllm/vllm-openai:latest --model Qwen/Qwen3.5-9B --host 0.0.0.0 --port 8000 --tensor-parallel-size 1 --dtype auto --gpu-memory-utilization 0.9 --max-model-len 4096 --max-num-seqs 256 --enable-auto-tool-choice --enable-auto-tool-choice --tool-call-parser qwen3_coder --reasoning-parser qwen3",
+  "duration_seconds": 1147.856573343277
+}
