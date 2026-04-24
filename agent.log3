@@ -1,0 +1,742 @@
+nohup: ignoring input
+09:29:30 INFO  [inference_agent] Starting inference benchmark agent
+09:29:30 INFO  [inference_agent] Model: Qwen/Qwen3.5-9B
+09:29:30 INFO  [inference_agent] Max experiments: 30
+09:29:30 INFO  [inference_agent] Engines: ['vllm', 'sglang']
+09:29:30 INFO  [inference_agent.nodes.discovery] Starting discovery for model: Qwen/Qwen3.5-9B
+09:29:33 INFO  [inference_agent.nodes.discovery] Model info: max_context=262144, is_vlm=True, has_mtp=True, hidden=4096, layers=32
+09:29:33 INFO  [inference_agent.nodes.discovery] Discovery complete: 1 GPUs (NVIDIA A100-PCIE-40GB), max_context=262144, engines=['vllm', 'sglang']
+09:29:33 INFO  [inference_agent.nodes.planner] Asking LLM to plan experiment #1...
+09:29:40 INFO  [inference_agent.nodes.planner] Planned: vllm, TP=1, ctx=32768, quant=none, rationale: Running baseline for vLLM as per rule #1. Using default parameters with TP=1, kv_cache_dtype=auto, and fcfs scheduling. 
+09:29:40 INFO  [inference_agent.nodes.executor] 
+09:29:40 INFO  [inference_agent.nodes.executor] ============================================================
+09:29:40 INFO  [inference_agent.nodes.executor] EXPERIMENT 1/30: 4d7238f8f98b | VLLM | TP=1 | quant=none
+09:29:40 INFO  [inference_agent.nodes.executor] Rationale: Running baseline for vLLM as per rule #1. Using default parameters with TP=1, kv_cache_dtype=auto, and fcfs scheduling. Setting a conservative max_mod
+09:29:40 INFO  [inference_agent.nodes.executor] ============================================================
+09:29:40 INFO  [inference_agent.nodes.executor] Docker command: docker run --name bench-vllm-4d7238f8f98b --gpus all --shm-size 16g --network host -v /root/.cache/huggingface:/root/.cache/huggingface -d vllm/vllm-openai:latest --model Qwen/Qwen3.5-9B --host 0.0.0.0 --port 8000 --tensor-parallel-size 1 --dtype auto --gpu-memory-utilization 0.9 --max-model-len 32768 --max-num-seqs 256 --max-num-batched-tokens 8192 --enable-auto-tool-choice --tool-call-parser qwen3_coder --reasoning-parser qwen3
+09:29:44 INFO  [inference_agent.nodes.executor] Container started: fb3454591fce
+09:29:44 INFO  [inference_agent.nodes.executor] Waiting for engine health check...
+09:30:39 INFO  [inference_agent.utils.docker]   Still waiting for health check... (55s/900s)
+09:31:39 INFO  [inference_agent.utils.docker]   Still waiting for health check... (115s/900s)
+09:32:39 INFO  [inference_agent.utils.docker]   Still waiting for health check... (175s/900s)
+09:33:40 INFO  [inference_agent.utils.docker]   Still waiting for health check... (235s/900s)
+09:34:40 INFO  [inference_agent.utils.docker] Health check passed: http://localhost:8000/health
+09:34:40 INFO  [inference_agent.nodes.executor] Engine is healthy! Starting benchmark...
+09:34:40 INFO  [inference_agent.benchmark.runner] Skipping long_context_32k (c=1, p=32768): exceeds context 32768
+09:34:40 INFO  [inference_agent.benchmark.runner] Skipping long_context_32k (c=4, p=32768): exceeds context 32768
+09:34:40 INFO  [inference_agent.benchmark.runner] Skipping long_context_64k (c=1, p=65536): exceeds context 32768
+09:34:40 INFO  [inference_agent.benchmark.runner] Skipping long_context_64k (c=4, p=65536): exceeds context 32768
+09:34:40 INFO  [inference_agent.benchmark.runner] Skipping long_context_100k (c=1, p=100000): exceeds context 32768
+09:34:40 INFO  [inference_agent.benchmark.runner] Skipping long_context_100k (c=2, p=100000): exceeds context 32768
+09:34:40 INFO  [inference_agent.nodes.executor]   Phase: warmup (c=1, prompt=512, max_out=128, dur=10s)
+09:34:51 INFO  [inference_agent.nodes.executor]   Phase: latency (c=1, prompt=128, max_out=256, dur=60s)
+09:35:53 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=1, prompt_len=128, requests=17, throughput=69.6 tok/s, ttft_p95=736.5 ms, errors=0
+09:35:53 INFO  [inference_agent.nodes.executor]   Phase: latency (c=1, prompt=512, max_out=256, dur=60s)
+09:36:56 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=1, prompt_len=512, requests=17, throughput=68.6 tok/s, ttft_p95=76.1 ms, errors=0
+09:36:56 INFO  [inference_agent.nodes.executor]   Phase: latency (c=1, prompt=2048, max_out=256, dur=60s)
+09:37:57 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=1, prompt_len=2048, requests=16, throughput=67.0 tok/s, ttft_p95=587.3 ms, errors=0
+09:37:57 INFO  [inference_agent.nodes.executor]   Phase: latency (c=1, prompt=4096, max_out=256, dur=60s)
+09:38:59 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=1, prompt_len=4096, requests=16, throughput=65.7 tok/s, ttft_p95=235.4 ms, errors=0
+09:38:59 INFO  [inference_agent.nodes.executor]   Phase: mid_throughput (c=4, prompt=512, max_out=256, dur=60s)
+09:40:00 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=4, prompt_len=512, requests=64, throughput=265.6 tok/s, ttft_p95=183.4 ms, errors=0
+09:40:00 INFO  [inference_agent.nodes.executor]   Phase: mid_throughput (c=4, prompt=2048, max_out=256, dur=60s)
+09:41:03 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=4, prompt_len=2048, requests=60, throughput=244.1 tok/s, ttft_p95=538.4 ms, errors=0
+09:41:03 INFO  [inference_agent.nodes.executor]   Phase: mid_throughput (c=16, prompt=512, max_out=256, dur=60s)
+09:42:05 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=16, prompt_len=512, requests=224, throughput=909.6 tok/s, ttft_p95=531.2 ms, errors=0
+09:42:05 INFO  [inference_agent.nodes.executor]   Phase: mid_throughput (c=16, prompt=2048, max_out=256, dur=60s)
+09:43:07 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=16, prompt_len=2048, requests=176, throughput=726.7 tok/s, ttft_p95=1511.1 ms, errors=0
+09:43:07 INFO  [inference_agent.nodes.executor]   Phase: mid_throughput (c=64, prompt=512, max_out=256, dur=60s)
+09:44:11 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=64, prompt_len=512, requests=576, throughput=2308.8 tok/s, ttft_p95=1637.1 ms, errors=0
+09:44:11 INFO  [inference_agent.nodes.executor]   Phase: mid_throughput (c=64, prompt=2048, max_out=256, dur=60s)
+09:45:18 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=64, prompt_len=2048, requests=346, throughput=1322.8 tok/s, ttft_p95=5307.5 ms, errors=0
+09:45:18 INFO  [inference_agent.nodes.executor]   Phase: high_throughput (c=128, prompt=512, max_out=256, dur=60s)
+09:46:23 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=128, prompt_len=512, requests=768, throughput=3023.4 tok/s, ttft_p95=2939.5 ms, errors=0
+09:46:23 INFO  [inference_agent.nodes.executor]   Phase: high_throughput (c=256, prompt=512, max_out=256, dur=60s)
+09:47:34 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=256, prompt_len=512, requests=744, throughput=2692.4 tok/s, ttft_p95=7730.6 ms, errors=0
+09:47:34 INFO  [inference_agent.nodes.executor]   Phase: stress (c=512, prompt=512, max_out=256, dur=60s)
+09:49:11 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=512, prompt_len=512, requests=1000, throughput=2640.4 tok/s, ttft_p95=36693.9 ms, errors=0
+09:49:11 INFO  [inference_agent.nodes.executor]   Phase: long_context_16k (c=1, prompt=16384, max_out=8192, dur=60s)
+09:50:11 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=1, prompt_len=16384, requests=3, throughput=64.1 tok/s, ttft_p95=859.8 ms, errors=0
+09:50:11 INFO  [inference_agent.nodes.executor]   Phase: long_context_16k (c=4, prompt=16384, max_out=8192, dur=60s)
+09:52:50 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=4, prompt_len=16384, requests=9, throughput=205.9 tok/s, ttft_p95=3276.9 ms, errors=0
+09:52:50 INFO  [inference_agent.nodes.executor]   Phase: long_context_24k (c=1, prompt=24576, max_out=8192, dur=60s)
+09:53:58 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=1, prompt_len=24576, requests=3, throughput=64.2 tok/s, ttft_p95=1283.3 ms, errors=0
+09:53:58 INFO  [inference_agent.nodes.executor]   Phase: long_context_24k (c=4, prompt=24576, max_out=8192, dur=60s)
+09:55:21 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=4, prompt_len=24576, requests=11, throughput=192.4 tok/s, ttft_p95=5025.3 ms, errors=0
+09:55:21 INFO  [inference_agent.nodes.executor] Running smoke tests...
+09:55:21 INFO  [inference_agent.benchmark.smoke_tests] Smoke test: tool calling...
+09:55:22 INFO  [inference_agent.benchmark.smoke_tests]   PASS: tool_calls with get_weather(city=Moscow)
+09:55:22 INFO  [inference_agent.benchmark.smoke_tests] Smoke test: JSON mode...
+09:55:38 INFO  [inference_agent.benchmark.smoke_tests]   No content in response (reasoning model may not support JSON mode)
+09:55:38 INFO  [inference_agent.benchmark.smoke_tests] Smoke test: JSON schema...
+09:55:49 INFO  [inference_agent.benchmark.smoke_tests]   PASS: 3 languages: ['Python', 'C', 'Java']
+09:55:55 INFO  [inference_agent.nodes.executor] Experiment 4d7238f8f98b complete: peak_throughput=3023.4 tok/s, low_ttft_p95=76.1 ms, duration=1575s
+09:56:01 INFO  [inference_agent.nodes.analyzer] Analysis: This baseline vLLM experiment establishes a strong starting point with excellent latency (76ms TTFT  | classification=best_balanced | decision=continue | next_goal=optimize_throughput
+09:56:03 INFO  [inference_agent.nodes.reporter] Saved experiment result to ./experiments/4d7238f8f98b.json
+09:56:03 INFO  [inference_agent.nodes.planner] Asking LLM to plan experiment #2...
+09:56:12 INFO  [inference_agent.nodes.planner] Planned: sglang, TP=1, ctx=32768, quant=none, rationale: Running SGLang baseline (experiment #2) with default params as required. This establishes the baseline for SGLang to com
+09:56:12 INFO  [inference_agent.nodes.executor] 
+09:56:12 INFO  [inference_agent.nodes.executor] ============================================================
+09:56:12 INFO  [inference_agent.nodes.executor] EXPERIMENT 2/30: c10b075b6c3c | SGLANG | TP=1 | quant=none
+09:56:12 INFO  [inference_agent.nodes.executor] Rationale: Running SGLang baseline (experiment #2) with default params as required. This establishes the baseline for SGLang to compare against vLLM. Using defau
+09:56:12 INFO  [inference_agent.nodes.executor] ============================================================
+09:56:12 INFO  [inference_agent.engines.sglang] NEXTN: bumping mem_fraction_static from 0.80 to 0.90
+09:56:12 INFO  [inference_agent.nodes.executor] Docker command: docker run --name bench-sglang-c10b075b6c3c --gpus all --shm-size 16g --network host -v /root/.cache/huggingface:/root/.cache/huggingface -d -e SGLANG_TORCH_COMPILE_MAX_BS=64 -e SGLANG_ENABLE_SPEC_V2=1 lmsysorg/sglang:latest python3 -m sglang.launch_server --model-path Qwen/Qwen3.5-9B --host 0.0.0.0 --port 8000 --tp-size 1 --dtype auto --enable-metrics --mem-fraction-static 0.9 --context-length 32768 --max-running-requests 256 --max-prefill-tokens 4096 --chunked-prefill-size 8192 --mamba-scheduler-strategy extra_buffer --speculative-eagle-topk 1 --speculative-algorithm NEXTN --speculative-num-steps 3 --reasoning-parser qwen3 --tool-call-parser qwen3_coder
+09:56:13 INFO  [inference_agent.nodes.executor] Container started: 51a3d1d2ef7b
+09:56:13 INFO  [inference_agent.nodes.executor] Waiting for engine health check...
+09:57:08 ERROR [inference_agent.utils.docker] Container 'bench-sglang-c10b075b6c3c' is no longer running (crashed/OOM?).
+09:57:08 ERROR [inference_agent.nodes.executor] FAILED: Engine did not become healthy. Last logs:
+e 885, in _resolve_memory_pool_config
+    return MemoryPoolConfig(
+           ^^^^^^^^^^^^^^^^^
+  File "<string>", line 8, in __init__
+  File "/sgl-workspace/sglang/python/sglang/srt/model_executor/model_runner_kv_cache_mixin.py", line 60, in __post_init__
+    raise RuntimeError(msg)
+RuntimeError: Not enough memory. Please try to increase --mem-fraction-static. Current value: mem_fraction_static=0.9
+
+[2026-04-24 06:56:47] Received sigquit from a child process. It usually means the child failed.
+
+09:57:33 INFO  [inference_agent.nodes.analyzer] Analysis: The latest SGLang experiment failed completely, providing no performance data. This is a critical fa | classification=none | decision=continue | next_goal=explore
+09:57:33 INFO  [inference_agent.nodes.reporter] Saved experiment result to ./experiments/c10b075b6c3c.json
+09:57:33 INFO  [inference_agent.nodes.planner] Asking LLM to plan experiment #3...
+09:57:52 INFO  [inference_agent.nodes.planner] Planned: vllm, TP=1, ctx=32768, quant=none, rationale: Testing vLLM with --language-model-only flag for VLM model to evaluate performance gains on text-only benchmarks. This s
+09:57:52 INFO  [inference_agent.nodes.executor] 
+09:57:52 INFO  [inference_agent.nodes.executor] ============================================================
+09:57:52 INFO  [inference_agent.nodes.executor] EXPERIMENT 3/30: b6ddc86bd841 | VLLM | TP=1 | quant=none
+09:57:52 INFO  [inference_agent.nodes.executor] Rationale: Testing vLLM with --language-model-only flag for VLM model to evaluate performance gains on text-only benchmarks. This should skip vision processing o
+09:57:52 INFO  [inference_agent.nodes.executor] ============================================================
+09:57:52 INFO  [inference_agent.nodes.executor] Docker command: docker run --name bench-vllm-b6ddc86bd841 --gpus all --shm-size 16g --network host -v /root/.cache/huggingface:/root/.cache/huggingface -d vllm/vllm-openai:latest --model Qwen/Qwen3.5-9B --host 0.0.0.0 --port 8000 --tensor-parallel-size 1 --dtype auto --gpu-memory-utilization 0.9 --max-model-len 32768 --max-num-seqs 256 --max-num-batched-tokens 8192 --language-model-only --enable-auto-tool-choice --tool-call-parser qwen3_coder --reasoning-parser qwen3
+09:57:53 INFO  [inference_agent.nodes.executor] Container started: b8df8d017a83
+09:57:53 INFO  [inference_agent.nodes.executor] Waiting for engine health check...
+09:58:48 INFO  [inference_agent.utils.docker]   Still waiting for health check... (55s/900s)
+09:59:48 INFO  [inference_agent.utils.docker]   Still waiting for health check... (115s/900s)
+10:00:48 INFO  [inference_agent.utils.docker]   Still waiting for health check... (175s/900s)
+10:01:48 INFO  [inference_agent.utils.docker]   Still waiting for health check... (235s/900s)
+10:02:33 INFO  [inference_agent.utils.docker] Health check passed: http://localhost:8000/health
+10:02:33 INFO  [inference_agent.nodes.executor] Engine is healthy! Starting benchmark...
+10:02:33 INFO  [inference_agent.benchmark.runner] Skipping long_context_32k (c=1, p=32768): exceeds context 32768
+10:02:33 INFO  [inference_agent.benchmark.runner] Skipping long_context_32k (c=4, p=32768): exceeds context 32768
+10:02:33 INFO  [inference_agent.benchmark.runner] Skipping long_context_64k (c=1, p=65536): exceeds context 32768
+10:02:33 INFO  [inference_agent.benchmark.runner] Skipping long_context_64k (c=4, p=65536): exceeds context 32768
+10:02:33 INFO  [inference_agent.benchmark.runner] Skipping long_context_100k (c=1, p=100000): exceeds context 32768
+10:02:33 INFO  [inference_agent.benchmark.runner] Skipping long_context_100k (c=2, p=100000): exceeds context 32768
+10:02:33 INFO  [inference_agent.nodes.executor]   Phase: warmup (c=1, prompt=512, max_out=128, dur=10s)
+10:02:43 INFO  [inference_agent.nodes.executor]   Phase: latency (c=1, prompt=128, max_out=256, dur=60s)
+10:03:47 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=1, prompt_len=128, requests=17, throughput=67.4 tok/s, ttft_p95=738.6 ms, errors=0
+10:03:47 INFO  [inference_agent.nodes.executor]   Phase: latency (c=1, prompt=512, max_out=256, dur=60s)
+10:04:49 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=1, prompt_len=512, requests=16, throughput=65.1 tok/s, ttft_p95=58.5 ms, errors=0
+10:04:49 INFO  [inference_agent.nodes.executor]   Phase: latency (c=1, prompt=2048, max_out=256, dur=60s)
+10:05:51 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=1, prompt_len=2048, requests=16, throughput=65.4 tok/s, ttft_p95=663.1 ms, errors=0
+10:05:51 INFO  [inference_agent.nodes.executor]   Phase: latency (c=1, prompt=4096, max_out=256, dur=60s)
+10:06:52 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=1, prompt_len=4096, requests=16, throughput=66.0 tok/s, ttft_p95=232.7 ms, errors=0
+10:06:52 INFO  [inference_agent.nodes.executor]   Phase: mid_throughput (c=4, prompt=512, max_out=256, dur=60s)
+10:07:52 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=4, prompt_len=512, requests=64, throughput=271.1 tok/s, ttft_p95=157.5 ms, errors=0
+10:07:52 INFO  [inference_agent.nodes.executor]   Phase: mid_throughput (c=4, prompt=2048, max_out=256, dur=60s)
+10:08:54 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=4, prompt_len=2048, requests=60, throughput=250.7 tok/s, ttft_p95=456.2 ms, errors=0
+10:08:54 INFO  [inference_agent.nodes.executor]   Phase: mid_throughput (c=16, prompt=512, max_out=256, dur=60s)
+10:09:56 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=16, prompt_len=512, requests=224, throughput=907.7 tok/s, ttft_p95=466.6 ms, errors=0
+10:09:56 INFO  [inference_agent.nodes.executor]   Phase: mid_throughput (c=16, prompt=2048, max_out=256, dur=60s)
+10:10:58 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=16, prompt_len=2048, requests=176, throughput=727.6 tok/s, ttft_p95=1521.9 ms, errors=0
+10:10:58 INFO  [inference_agent.nodes.executor]   Phase: mid_throughput (c=64, prompt=512, max_out=256, dur=60s)
+10:12:02 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=64, prompt_len=512, requests=576, throughput=2304.1 tok/s, ttft_p95=1626.2 ms, errors=0
+10:12:02 INFO  [inference_agent.nodes.executor]   Phase: mid_throughput (c=64, prompt=2048, max_out=256, dur=60s)
+10:13:03 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=64, prompt_len=2048, requests=320, throughput=1319.9 tok/s, ttft_p95=5281.6 ms, errors=0
+10:13:03 INFO  [inference_agent.nodes.executor]   Phase: high_throughput (c=128, prompt=512, max_out=256, dur=60s)
+10:14:09 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=128, prompt_len=512, requests=768, throughput=2927.3 tok/s, ttft_p95=3103.1 ms, errors=0
+10:14:09 INFO  [inference_agent.nodes.executor]   Phase: high_throughput (c=256, prompt=512, max_out=256, dur=60s)
+10:15:23 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=256, prompt_len=512, requests=764, throughput=2668.0 tok/s, ttft_p95=6707.4 ms, errors=0
+10:15:23 INFO  [inference_agent.nodes.executor]   Phase: stress (c=512, prompt=512, max_out=256, dur=60s)
+10:17:01 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=512, prompt_len=512, requests=1020, throughput=2650.6 tok/s, ttft_p95=31041.5 ms, errors=0
+10:17:01 INFO  [inference_agent.nodes.executor]   Phase: long_context_16k (c=1, prompt=16384, max_out=8192, dur=60s)
+10:18:11 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=1, prompt_len=16384, requests=3, throughput=66.4 tok/s, ttft_p95=854.7 ms, errors=0
+10:18:11 INFO  [inference_agent.nodes.executor]   Phase: long_context_16k (c=4, prompt=16384, max_out=8192, dur=60s)
+10:21:05 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=4, prompt_len=16384, requests=12, throughput=150.4 tok/s, ttft_p95=3256.1 ms, errors=0
+10:21:05 INFO  [inference_agent.nodes.executor]   Phase: long_context_24k (c=1, prompt=24576, max_out=8192, dur=60s)
+10:22:14 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=1, prompt_len=24576, requests=3, throughput=64.7 tok/s, ttft_p95=1300.1 ms, errors=0
+10:22:14 INFO  [inference_agent.nodes.executor]   Phase: long_context_24k (c=4, prompt=24576, max_out=8192, dur=60s)
+10:23:42 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=4, prompt_len=24576, requests=11, throughput=194.2 tok/s, ttft_p95=5037.9 ms, errors=0
+10:23:42 INFO  [inference_agent.nodes.executor] Running smoke tests...
+10:23:42 INFO  [inference_agent.benchmark.smoke_tests] Smoke test: tool calling...
+10:23:43 INFO  [inference_agent.benchmark.smoke_tests]   PASS: tool_calls with get_weather(city=Moscow)
+10:23:43 INFO  [inference_agent.benchmark.smoke_tests] Smoke test: JSON mode...
+10:23:53 INFO  [inference_agent.benchmark.smoke_tests]   PASS: valid JSON with keys ['languages']
+10:23:53 INFO  [inference_agent.benchmark.smoke_tests] Smoke test: JSON schema...
+10:24:08 INFO  [inference_agent.benchmark.smoke_tests]   No content in response (reasoning model may not support JSON schema)
+10:24:12 INFO  [inference_agent.nodes.executor] Experiment b6ddc86bd841 complete: peak_throughput=2927.3 tok/s, low_ttft_p95=58.5 ms, duration=1581s
+10:24:15 INFO  [inference_agent.nodes.analyzer] Analysis: The latest experiment achieved the best latency (58.5ms TTFT p95) while maintaining strong throughpu | classification=best_latency | decision=continue | next_goal=optimize_throughput
+10:24:15 INFO  [inference_agent.nodes.reporter] Saved experiment result to ./experiments/b6ddc86bd841.json
+10:24:15 INFO  [inference_agent.nodes.planner] Asking LLM to plan experiment #4...
+10:24:42 INFO  [inference_agent.nodes.planner] Planned: sglang, TP=1, ctx=16384, quant=none, rationale: Running SGLang with NEXTN speculative decoding (MTP) as requested by user. Previous SGLang baseline failed with health c
+10:24:42 INFO  [inference_agent.nodes.executor] 
+10:24:42 INFO  [inference_agent.nodes.executor] ============================================================
+10:24:42 INFO  [inference_agent.nodes.executor] EXPERIMENT 4/30: 22f40766907b | SGLANG | TP=1 | quant=none
+10:24:42 INFO  [inference_agent.nodes.executor] Rationale: Running SGLang with NEXTN speculative decoding (MTP) as requested by user. Previous SGLang baseline failed with health check timeout, likely due to hi
+10:24:42 INFO  [inference_agent.nodes.executor] ============================================================
+10:24:42 INFO  [inference_agent.engines.sglang] NEXTN: bumping mem_fraction_static from 0.80 to 0.90
+10:24:42 INFO  [inference_agent.nodes.executor] Docker command: docker run --name bench-sglang-22f40766907b --gpus all --shm-size 16g --network host -v /root/.cache/huggingface:/root/.cache/huggingface -d -e SGLANG_ENABLE_SPEC_V2=1 lmsysorg/sglang:latest python3 -m sglang.launch_server --model-path Qwen/Qwen3.5-9B --host 0.0.0.0 --port 8000 --tp-size 1 --dtype auto --enable-metrics --mem-fraction-static 0.9 --context-length 16384 --max-running-requests 256 --max-prefill-tokens 4096 --mamba-scheduler-strategy extra_buffer --speculative-eagle-topk 1 --speculative-algorithm NEXTN --speculative-num-steps 3 --reasoning-parser qwen3 --tool-call-parser qwen3_coder
+10:24:43 INFO  [inference_agent.nodes.executor] Container started: 7571274c9c59
+10:24:43 INFO  [inference_agent.nodes.executor] Waiting for engine health check...
+10:25:39 ERROR [inference_agent.utils.docker] Container 'bench-sglang-22f40766907b' is no longer running (crashed/OOM?).
+10:25:39 ERROR [inference_agent.nodes.executor] FAILED: Engine did not become healthy. Last logs:
+e 885, in _resolve_memory_pool_config
+    return MemoryPoolConfig(
+           ^^^^^^^^^^^^^^^^^
+  File "<string>", line 8, in __init__
+  File "/sgl-workspace/sglang/python/sglang/srt/model_executor/model_runner_kv_cache_mixin.py", line 60, in __post_init__
+    raise RuntimeError(msg)
+RuntimeError: Not enough memory. Please try to increase --mem-fraction-static. Current value: mem_fraction_static=0.9
+
+[2026-04-24 07:25:18] Received sigquit from a child process. It usually means the child failed.
+
+10:25:52 INFO  [inference_agent.nodes.analyzer] Analysis: The SGLang experiment with NEXTN speculative decoding failed completely, showing zero throughput and | classification=none | decision=continue | next_goal=optimize_throughput
+10:25:52 INFO  [inference_agent.nodes.reporter] Saved experiment result to ./experiments/22f40766907b.json
+10:25:52 INFO  [inference_agent.nodes.planner] Asking LLM to plan experiment #5...
+10:25:58 INFO  [inference_agent.nodes.planner] Planned: sglang, TP=1, ctx=32768, quant=none, rationale: Testing SGLang with NEXTN speculative decoding (MTP) to evaluate throughput gains. Using conservative max_model_len=3276
+10:25:58 INFO  [inference_agent.nodes.executor] 
+10:25:58 INFO  [inference_agent.nodes.executor] ============================================================
+10:25:58 INFO  [inference_agent.nodes.executor] EXPERIMENT 5/30: e91014b530e9 | SGLANG | TP=1 | quant=none
+10:25:58 INFO  [inference_agent.nodes.executor] Rationale: Testing SGLang with NEXTN speculative decoding (MTP) to evaluate throughput gains. Using conservative max_model_len=32768 after previous failures, wit
+10:25:58 INFO  [inference_agent.nodes.executor] ============================================================
+10:25:59 INFO  [inference_agent.engines.sglang] NEXTN: bumping mem_fraction_static from 0.80 to 0.90
+10:25:59 INFO  [inference_agent.nodes.executor] Docker command: docker run --name bench-sglang-e91014b530e9 --gpus all --shm-size 16g --network host -v /root/.cache/huggingface:/root/.cache/huggingface -d -e SGLANG_ENABLE_SPEC_V2=1 lmsysorg/sglang:latest python3 -m sglang.launch_server --model-path Qwen/Qwen3.5-9B --host 0.0.0.0 --port 8000 --tp-size 1 --dtype auto --enable-metrics --mem-fraction-static 0.9 --context-length 32768 --max-running-requests 256 --max-prefill-tokens 4096 --chunked-prefill-size 8192 --mamba-scheduler-strategy extra_buffer --speculative-eagle-topk 1 --speculative-algorithm NEXTN --speculative-num-steps 3 --reasoning-parser qwen3 --tool-call-parser qwen3_coder
+10:26:00 INFO  [inference_agent.nodes.executor] Container started: 69d2b3c17e6c
+10:26:00 INFO  [inference_agent.nodes.executor] Waiting for engine health check...
+10:26:55 ERROR [inference_agent.utils.docker] Container 'bench-sglang-e91014b530e9' is no longer running (crashed/OOM?).
+10:26:55 ERROR [inference_agent.nodes.executor] FAILED: Engine did not become healthy. Last logs:
+e 885, in _resolve_memory_pool_config
+    return MemoryPoolConfig(
+           ^^^^^^^^^^^^^^^^^
+  File "<string>", line 8, in __init__
+  File "/sgl-workspace/sglang/python/sglang/srt/model_executor/model_runner_kv_cache_mixin.py", line 60, in __post_init__
+    raise RuntimeError(msg)
+RuntimeError: Not enough memory. Please try to increase --mem-fraction-static. Current value: mem_fraction_static=0.9
+
+[2026-04-24 07:26:34] Received sigquit from a child process. It usually means the child failed.
+
+10:26:58 INFO  [inference_agent.nodes.analyzer] Analysis: The latest SGLang experiment with NEXTN speculative decoding failed completely, showing zero through | classification=none | decision=continue | next_goal=explore
+10:26:58 INFO  [inference_agent.nodes.reporter] Saved experiment result to ./experiments/e91014b530e9.json
+10:26:58 INFO  [inference_agent.nodes.planner] Asking LLM to plan experiment #6...
+10:27:05 INFO  [inference_agent.nodes.planner] Planned: sglang, TP=1, ctx=32768, quant=none, rationale: Exploring SGLang with NEXTN speculative decoding using the model's built-in MTP layers. This is a key optimization for m
+10:27:05 INFO  [inference_agent.nodes.executor] 
+10:27:05 INFO  [inference_agent.nodes.executor] ============================================================
+10:27:05 INFO  [inference_agent.nodes.executor] EXPERIMENT 6/30: 27965c07c93e | SGLANG | TP=1 | quant=none
+10:27:05 INFO  [inference_agent.nodes.executor] Rationale: Exploring SGLang with NEXTN speculative decoding using the model's built-in MTP layers. This is a key optimization for models with MTP support. Based 
+10:27:05 INFO  [inference_agent.nodes.executor] ============================================================
+10:27:05 INFO  [inference_agent.engines.sglang] NEXTN: bumping mem_fraction_static from 0.80 to 0.90
+10:27:05 INFO  [inference_agent.nodes.executor] Docker command: docker run --name bench-sglang-27965c07c93e --gpus all --shm-size 16g --network host -v /root/.cache/huggingface:/root/.cache/huggingface -d -e SGLANG_ENABLE_SPEC_V2=1 lmsysorg/sglang:latest python3 -m sglang.launch_server --model-path Qwen/Qwen3.5-9B --host 0.0.0.0 --port 8000 --tp-size 1 --dtype auto --enable-metrics --mem-fraction-static 0.9 --context-length 32768 --max-running-requests 256 --max-prefill-tokens 4096 --schedule-policy lpm --chunked-prefill-size 8192 --mamba-scheduler-strategy extra_buffer --speculative-eagle-topk 1 --num-continuous-decode-steps 2 --speculative-algorithm NEXTN --speculative-num-steps 3 --reasoning-parser qwen3 --tool-call-parser qwen3_coder
+10:27:05 INFO  [inference_agent.nodes.executor] Container started: 2879d34925b2
+10:27:05 INFO  [inference_agent.nodes.executor] Waiting for engine health check...
+10:28:00 ERROR [inference_agent.utils.docker] Container 'bench-sglang-27965c07c93e' is no longer running (crashed/OOM?).
+10:28:00 ERROR [inference_agent.nodes.executor] FAILED: Engine did not become healthy. Last logs:
+e 885, in _resolve_memory_pool_config
+    return MemoryPoolConfig(
+           ^^^^^^^^^^^^^^^^^
+  File "<string>", line 8, in __init__
+  File "/sgl-workspace/sglang/python/sglang/srt/model_executor/model_runner_kv_cache_mixin.py", line 60, in __post_init__
+    raise RuntimeError(msg)
+RuntimeError: Not enough memory. Please try to increase --mem-fraction-static. Current value: mem_fraction_static=0.9
+
+[2026-04-24 07:27:38] Received sigquit from a child process. It usually means the child failed.
+
+10:28:05 INFO  [inference_agent.nodes.analyzer] Analysis: The latest SGLang experiment with NEXTN speculative decoding failed completely, providing no perform | classification=none | decision=continue | next_goal=explore
+10:28:05 INFO  [inference_agent.nodes.reporter] Saved experiment result to ./experiments/27965c07c93e.json
+10:28:05 INFO  [inference_agent.nodes.planner] Asking LLM to plan experiment #7...
+10:28:11 INFO  [inference_agent.nodes.planner] Planned: sglang, TP=1, ctx=32768, quant=none, rationale: Evaluating MTP (NEXTN) speculative decoding on SGLang with Qwen3.5-9B. This leverages the model's built-in MTP layers fo
+10:28:11 INFO  [inference_agent.nodes.executor] 
+10:28:12 INFO  [inference_agent.nodes.executor] ============================================================
+10:28:12 INFO  [inference_agent.nodes.executor] EXPERIMENT 7/30: 1ac322902146 | SGLANG | TP=1 | quant=none
+10:28:12 INFO  [inference_agent.nodes.executor] Rationale: Evaluating MTP (NEXTN) speculative decoding on SGLang with Qwen3.5-9B. This leverages the model's built-in MTP layers for ~1.5-2x throughput boost. Co
+10:28:12 INFO  [inference_agent.nodes.executor] ============================================================
+10:28:12 INFO  [inference_agent.engines.sglang] NEXTN: bumping mem_fraction_static from 0.80 to 0.90
+10:28:12 INFO  [inference_agent.nodes.executor] Docker command: docker run --name bench-sglang-1ac322902146 --gpus all --shm-size 16g --network host -v /root/.cache/huggingface:/root/.cache/huggingface -d -e SGLANG_ENABLE_SPEC_V2=1 lmsysorg/sglang:latest python3 -m sglang.launch_server --model-path Qwen/Qwen3.5-9B --host 0.0.0.0 --port 8000 --tp-size 1 --dtype auto --enable-metrics --mem-fraction-static 0.9 --context-length 32768 --max-running-requests 256 --max-prefill-tokens 4096 --schedule-policy lpm --chunked-prefill-size 4096 --mamba-scheduler-strategy extra_buffer --speculative-eagle-topk 1 --num-continuous-decode-steps 2 --speculative-algorithm NEXTN --speculative-num-steps 3 --reasoning-parser qwen3 --tool-call-parser qwen3_coder
+10:28:12 INFO  [inference_agent.nodes.executor] Container started: eb3233e58e3d
+10:28:12 INFO  [inference_agent.nodes.executor] Waiting for engine health check...
+10:29:07 ERROR [inference_agent.utils.docker] Container 'bench-sglang-1ac322902146' is no longer running (crashed/OOM?).
+10:29:07 ERROR [inference_agent.nodes.executor] FAILED: Engine did not become healthy. Last logs:
+e 885, in _resolve_memory_pool_config
+    return MemoryPoolConfig(
+           ^^^^^^^^^^^^^^^^^
+  File "<string>", line 8, in __init__
+  File "/sgl-workspace/sglang/python/sglang/srt/model_executor/model_runner_kv_cache_mixin.py", line 60, in __post_init__
+    raise RuntimeError(msg)
+RuntimeError: Not enough memory. Please try to increase --mem-fraction-static. Current value: mem_fraction_static=0.9
+
+[2026-04-24 07:28:51] Received sigquit from a child process. It usually means the child failed.
+
+10:29:14 INFO  [inference_agent.nodes.analyzer] Analysis: The latest SGLang experiment with NEXTN speculative decoding failed completely, yielding zero throug | classification=none | decision=continue | next_goal=optimize_throughput
+10:29:14 INFO  [inference_agent.nodes.reporter] Saved experiment result to ./experiments/1ac322902146.json
+10:29:14 INFO  [inference_agent.nodes.planner] Asking LLM to plan experiment #8...
+10:29:20 INFO  [inference_agent.nodes.planner] Planned: sglang, TP=1, ctx=32768, quant=none, rationale: Testing SGLang with NEXTN speculative decoding using the model's built-in MTP layers. This should provide a significant 
+10:29:20 INFO  [inference_agent.nodes.executor] 
+10:29:20 INFO  [inference_agent.nodes.executor] ============================================================
+10:29:20 INFO  [inference_agent.nodes.executor] EXPERIMENT 8/30: 7785bd1a1ee1 | SGLANG | TP=1 | quant=none
+10:29:20 INFO  [inference_agent.nodes.executor] Rationale: Testing SGLang with NEXTN speculative decoding using the model's built-in MTP layers. This should provide a significant throughput boost over the base
+10:29:20 INFO  [inference_agent.nodes.executor] ============================================================
+10:29:20 INFO  [inference_agent.engines.sglang] NEXTN: bumping mem_fraction_static from 0.80 to 0.90
+10:29:20 INFO  [inference_agent.nodes.executor] Docker command: docker run --name bench-sglang-7785bd1a1ee1 --gpus all --shm-size 16g --network host -v /root/.cache/huggingface:/root/.cache/huggingface -d -e SGLANG_ENABLE_SPEC_V2=1 lmsysorg/sglang:latest python3 -m sglang.launch_server --model-path Qwen/Qwen3.5-9B --host 0.0.0.0 --port 8000 --tp-size 1 --dtype auto --enable-metrics --mem-fraction-static 0.9 --context-length 32768 --max-running-requests 256 --max-prefill-tokens 4096 --chunked-prefill-size 8192 --mamba-scheduler-strategy extra_buffer --speculative-eagle-topk 1 --speculative-algorithm NEXTN --speculative-num-steps 3 --reasoning-parser qwen3 --tool-call-parser qwen3_coder
+10:29:22 INFO  [inference_agent.nodes.executor] Container started: 99d1d98d6bc8
+10:29:22 INFO  [inference_agent.nodes.executor] Waiting for engine health check...
+10:30:17 ERROR [inference_agent.utils.docker] Container 'bench-sglang-7785bd1a1ee1' is no longer running (crashed/OOM?).
+10:30:17 ERROR [inference_agent.nodes.executor] FAILED: Engine did not become healthy. Last logs:
+e 885, in _resolve_memory_pool_config
+    return MemoryPoolConfig(
+           ^^^^^^^^^^^^^^^^^
+  File "<string>", line 8, in __init__
+  File "/sgl-workspace/sglang/python/sglang/srt/model_executor/model_runner_kv_cache_mixin.py", line 60, in __post_init__
+    raise RuntimeError(msg)
+RuntimeError: Not enough memory. Please try to increase --mem-fraction-static. Current value: mem_fraction_static=0.9
+
+[2026-04-24 07:29:55] Received sigquit from a child process. It usually means the child failed.
+
+10:31:07 INFO  [inference_agent.nodes.analyzer] Analysis: The SGLang experiment with NEXTN speculative decoding failed completely, providing no performance me | classification=none | decision=continue | next_goal=explore
+10:31:07 INFO  [inference_agent.nodes.reporter] Saved experiment result to ./experiments/7785bd1a1ee1.json
+10:31:07 INFO  [inference_agent.nodes.planner] Asking LLM to plan experiment #9...
+10:31:56 INFO  [inference_agent.nodes.planner] Planned: sglang, TP=1, ctx=32768, quant=none, rationale: Testing SGLang with MTP (NEXTN) speculative decoding enabled. This leverages the model's built-in MTP layers for 3-step 
+10:31:56 INFO  [inference_agent.nodes.executor] 
+10:31:56 INFO  [inference_agent.nodes.executor] ============================================================
+10:31:56 INFO  [inference_agent.nodes.executor] EXPERIMENT 9/30: eb5ae1d6fc99 | SGLANG | TP=1 | quant=none
+10:31:56 INFO  [inference_agent.nodes.executor] Rationale: Testing SGLang with MTP (NEXTN) speculative decoding enabled. This leverages the model's built-in MTP layers for 3-step speculation with prefix cachin
+10:31:56 INFO  [inference_agent.nodes.executor] ============================================================
+10:31:56 INFO  [inference_agent.engines.sglang] NEXTN: bumping mem_fraction_static from 0.80 to 0.90
+10:31:56 INFO  [inference_agent.nodes.executor] Docker command: docker run --name bench-sglang-eb5ae1d6fc99 --gpus all --shm-size 16g --network host -v /root/.cache/huggingface:/root/.cache/huggingface -d -e SGLANG_ENABLE_SPEC_V2=1 lmsysorg/sglang:latest python3 -m sglang.launch_server --model-path Qwen/Qwen3.5-9B --host 0.0.0.0 --port 8000 --tp-size 1 --dtype auto --enable-metrics --mem-fraction-static 0.9 --context-length 32768 --max-running-requests 256 --max-prefill-tokens 4096 --schedule-policy lpm --chunked-prefill-size 4096 --mamba-scheduler-strategy extra_buffer --speculative-eagle-topk 1 --num-continuous-decode-steps 2 --speculative-algorithm NEXTN --speculative-num-steps 3 --reasoning-parser qwen3 --tool-call-parser qwen3_coder
+10:31:56 INFO  [inference_agent.nodes.executor] Container started: d183b185a3c5
+10:31:56 INFO  [inference_agent.nodes.executor] Waiting for engine health check...
+10:32:51 ERROR [inference_agent.utils.docker] Container 'bench-sglang-eb5ae1d6fc99' is no longer running (crashed/OOM?).
+10:32:51 ERROR [inference_agent.nodes.executor] FAILED: Engine did not become healthy. Last logs:
+e 885, in _resolve_memory_pool_config
+    return MemoryPoolConfig(
+           ^^^^^^^^^^^^^^^^^
+  File "<string>", line 8, in __init__
+  File "/sgl-workspace/sglang/python/sglang/srt/model_executor/model_runner_kv_cache_mixin.py", line 60, in __post_init__
+    raise RuntimeError(msg)
+RuntimeError: Not enough memory. Please try to increase --mem-fraction-static. Current value: mem_fraction_static=0.9
+
+[2026-04-24 07:32:31] Received sigquit from a child process. It usually means the child failed.
+
+10:33:20 INFO  [inference_agent.nodes.analyzer] Analysis: The SGLang experiment with NEXTN speculative decoding failed completely, producing zero throughput a | classification=none | decision=continue | next_goal=explore
+10:33:20 INFO  [inference_agent.nodes.reporter] Saved experiment result to ./experiments/eb5ae1d6fc99.json
+10:33:20 INFO  [inference_agent.nodes.planner] Asking LLM to plan experiment #10...
+10:33:37 INFO  [inference_agent.nodes.planner] Planned: sglang, TP=1, ctx=32768, quant=none, rationale: Testing SGLang with NEXTN speculative decoding using the model's built-in MTP layers. This is the first experiment with 
+10:33:37 INFO  [inference_agent.nodes.executor] 
+10:33:37 INFO  [inference_agent.nodes.executor] ============================================================
+10:33:37 INFO  [inference_agent.nodes.executor] EXPERIMENT 10/30: fde5755ccf5d | SGLANG | TP=1 | quant=none
+10:33:37 INFO  [inference_agent.nodes.executor] Rationale: Testing SGLang with NEXTN speculative decoding using the model's built-in MTP layers. This is the first experiment with speculative decoding to evalua
+10:33:37 INFO  [inference_agent.nodes.executor] ============================================================
+10:33:37 INFO  [inference_agent.engines.sglang] NEXTN: bumping mem_fraction_static from 0.80 to 0.90
+10:33:37 INFO  [inference_agent.nodes.executor] Docker command: docker run --name bench-sglang-fde5755ccf5d --gpus all --shm-size 16g --network host -v /root/.cache/huggingface:/root/.cache/huggingface -d -e SGLANG_ENABLE_SPEC_V2=1 lmsysorg/sglang:latest python3 -m sglang.launch_server --model-path Qwen/Qwen3.5-9B --host 0.0.0.0 --port 8000 --tp-size 1 --dtype auto --enable-metrics --mem-fraction-static 0.9 --context-length 32768 --max-running-requests 256 --max-prefill-tokens 4096 --chunked-prefill-size 8192 --mamba-scheduler-strategy extra_buffer --speculative-eagle-topk 1 --speculative-algorithm NEXTN --speculative-num-steps 3 --reasoning-parser qwen3 --tool-call-parser qwen3_coder
+10:33:37 INFO  [inference_agent.nodes.executor] Container started: 9366a36edbb9
+10:33:37 INFO  [inference_agent.nodes.executor] Waiting for engine health check...
+10:34:32 ERROR [inference_agent.utils.docker] Container 'bench-sglang-fde5755ccf5d' is no longer running (crashed/OOM?).
+10:34:33 ERROR [inference_agent.nodes.executor] FAILED: Engine did not become healthy. Last logs:
+e 885, in _resolve_memory_pool_config
+    return MemoryPoolConfig(
+           ^^^^^^^^^^^^^^^^^
+  File "<string>", line 8, in __init__
+  File "/sgl-workspace/sglang/python/sglang/srt/model_executor/model_runner_kv_cache_mixin.py", line 60, in __post_init__
+    raise RuntimeError(msg)
+RuntimeError: Not enough memory. Please try to increase --mem-fraction-static. Current value: mem_fraction_static=0.9
+
+[2026-04-24 07:34:14] Received sigquit from a child process. It usually means the child failed.
+
+10:34:39 INFO  [inference_agent.nodes.analyzer] Analysis: The latest SGLang experiment with NEXTN speculative decoding failed, providing no performance data.  | classification=none | decision=continue | next_goal=explore
+10:34:39 INFO  [inference_agent.nodes.reporter] Saved experiment result to ./experiments/fde5755ccf5d.json
+10:34:39 INFO  [inference_agent.nodes.planner] Asking LLM to plan experiment #11...
+10:35:03 INFO  [inference_agent.nodes.planner] Planned: sglang, TP=1, ctx=32768, quant=none, rationale: Testing SGLang with NEXTN speculative decoding using the model's built-in MTP layers. This leverages the has_mtp=true ca
+10:35:03 INFO  [inference_agent.nodes.executor] 
+10:35:03 INFO  [inference_agent.nodes.executor] ============================================================
+10:35:03 INFO  [inference_agent.nodes.executor] EXPERIMENT 11/30: 5b08a90c35ba | SGLANG | TP=1 | quant=none
+10:35:03 INFO  [inference_agent.nodes.executor] Rationale: Testing SGLang with NEXTN speculative decoding using the model's built-in MTP layers. This leverages the has_mtp=true capability to potentially improv
+10:35:03 INFO  [inference_agent.nodes.executor] ============================================================
+10:35:03 INFO  [inference_agent.engines.sglang] NEXTN: bumping mem_fraction_static from 0.80 to 0.90
+10:35:03 INFO  [inference_agent.nodes.executor] Docker command: docker run --name bench-sglang-5b08a90c35ba --gpus all --shm-size 16g --network host -v /root/.cache/huggingface:/root/.cache/huggingface -d -e SGLANG_ENABLE_SPEC_V2=1 lmsysorg/sglang:latest python3 -m sglang.launch_server --model-path Qwen/Qwen3.5-9B --host 0.0.0.0 --port 8000 --tp-size 1 --dtype auto --enable-metrics --mem-fraction-static 0.9 --context-length 32768 --max-running-requests 256 --max-prefill-tokens 4096 --chunked-prefill-size 4096 --mamba-scheduler-strategy extra_buffer --speculative-eagle-topk 1 --speculative-algorithm NEXTN --speculative-num-steps 3 --reasoning-parser qwen3 --reasoning-parser qwen3 --tool-call-parser qwen3_coder
+10:35:03 INFO  [inference_agent.nodes.executor] Container started: 8d555532a7be
+10:35:03 INFO  [inference_agent.nodes.executor] Waiting for engine health check...
+10:35:28 ERROR [inference_agent.utils.docker] Container 'bench-sglang-5b08a90c35ba' is no longer running (crashed/OOM?).
+10:35:28 ERROR [inference_agent.nodes.executor] FAILED: Engine did not become healthy. Last logs:
+-process-config MM_PROCESS_CONFIG]
+                    [--mm-enable-dp-encoder]
+                    [--limit-mm-data-per-request LIMIT_MM_DATA_PER_REQUEST]
+                    [--decrypted-config-file DECRYPTED_CONFIG_FILE]
+                    [--decrypted-draft-config-file DECRYPTED_DRAFT_CONFIG_FILE]
+                    [--enable-prefix-mm-cache] [--enable-mm-global-cache]
+                    [--forward-hooks FORWARD_HOOKS]
+sglang serve: error: unrecognized arguments: --reasoning-parser qwen3
+
+10:35:36 INFO  [inference_agent.nodes.analyzer] Analysis: The latest SGLang experiment with NEXTN speculative decoding failed to produce any results, continui | classification=none | decision=continue | next_goal=optimize_throughput
+10:35:36 INFO  [inference_agent.nodes.reporter] Saved experiment result to ./experiments/5b08a90c35ba.json
+10:35:36 INFO  [inference_agent.nodes.planner] Asking LLM to plan experiment #12...
+10:36:05 INFO  [inference_agent.nodes.planner] Planned: sglang, TP=1, ctx=262144, quant=none, rationale: Testing SGLang with NEXTN speculative decoding using the model's built-in MTP layers, as requested. This leverages has_m
+10:36:05 INFO  [inference_agent.nodes.executor] 
+10:36:05 INFO  [inference_agent.nodes.executor] ============================================================
+10:36:05 INFO  [inference_agent.nodes.executor] EXPERIMENT 12/30: 11be6517e59c | SGLANG | TP=1 | quant=none
+10:36:05 INFO  [inference_agent.nodes.executor] Rationale: Testing SGLang with NEXTN speculative decoding using the model's built-in MTP layers, as requested. This leverages has_mtp=true for potential throughp
+10:36:05 INFO  [inference_agent.nodes.executor] ============================================================
+10:36:05 INFO  [inference_agent.engines.sglang] NEXTN: bumping mem_fraction_static from 0.80 to 0.90
+10:36:05 INFO  [inference_agent.nodes.executor] Docker command: docker run --name bench-sglang-11be6517e59c --gpus all --shm-size 16g --network host -v /root/.cache/huggingface:/root/.cache/huggingface -d -e SGLANG_ENABLE_SPEC_V2=1 lmsysorg/sglang:latest python3 -m sglang.launch_server --model-path Qwen/Qwen3.5-9B --host 0.0.0.0 --port 8000 --tp-size 1 --dtype auto --enable-metrics --mem-fraction-static 0.9 --context-length 262144 --max-running-requests 256 --max-prefill-tokens 8192 --chunked-prefill-size 8192 --mamba-scheduler-strategy extra_buffer --speculative-eagle-topk 1 --speculative-algorithm NEXTN --speculative-num-steps 3 --reasoning-parser qwen3 --speculative-algo NEXTN --speculative-num-steps 3 --speculative-eagle-topk 1 --speculative-num-draft-tokens 4 --reasoning-parser qwen3 --tool-call-parser qwen3_coder
+10:36:07 INFO  [inference_agent.nodes.executor] Container started: 5849ee8aad15
+10:36:07 INFO  [inference_agent.nodes.executor] Waiting for engine health check...
+10:36:32 ERROR [inference_agent.utils.docker] Container 'bench-sglang-11be6517e59c' is no longer running (crashed/OOM?).
+10:36:32 ERROR [inference_agent.nodes.executor] FAILED: Engine did not become healthy. Last logs:
+-data-per-request LIMIT_MM_DATA_PER_REQUEST]
+                    [--decrypted-config-file DECRYPTED_CONFIG_FILE]
+                    [--decrypted-draft-config-file DECRYPTED_DRAFT_CONFIG_FILE]
+                    [--enable-prefix-mm-cache] [--enable-mm-global-cache]
+                    [--forward-hooks FORWARD_HOOKS]
+sglang serve: error: unrecognized arguments: --reasoning-parser qwen3 --speculative-algo NEXTN --speculative-num-steps 3 --speculative-eagle-topk 1 --speculative-num-draft-tokens 4
+
+10:36:41 INFO  [inference_agent.nodes.analyzer] Analysis: The SGLang experiment with NEXTN speculative decoding failed to produce any results, likely due to c | classification=none | decision=continue | next_goal=optimize_throughput
+10:36:41 INFO  [inference_agent.nodes.reporter] Saved experiment result to ./experiments/11be6517e59c.json
+10:36:41 INFO  [inference_agent.nodes.planner] Asking LLM to plan experiment #13...
+10:36:58 INFO  [inference_agent.nodes.planner] Planned: sglang, TP=1, ctx=262144, quant=none, rationale: Testing SGLang with NEXTN speculative decoding using the model's built-in MTP layers. This leverages the has_mtp=true ca
+10:36:58 INFO  [inference_agent.nodes.executor] 
+10:36:58 INFO  [inference_agent.nodes.executor] ============================================================
+10:36:58 INFO  [inference_agent.nodes.executor] EXPERIMENT 13/30: 154b5e906b02 | SGLANG | TP=1 | quant=none
+10:36:58 INFO  [inference_agent.nodes.executor] Rationale: Testing SGLang with NEXTN speculative decoding using the model's built-in MTP layers. This leverages the has_mtp=true capability to potentially achiev
+10:36:58 INFO  [inference_agent.nodes.executor] ============================================================
+10:36:58 INFO  [inference_agent.engines.sglang] NEXTN: bumping mem_fraction_static from 0.80 to 0.90
+10:36:58 INFO  [inference_agent.nodes.executor] Docker command: docker run --name bench-sglang-154b5e906b02 --gpus all --shm-size 16g --network host -v /root/.cache/huggingface:/root/.cache/huggingface -d -e SGLANG_ENABLE_SPEC_V2=1 lmsysorg/sglang:latest python3 -m sglang.launch_server --model-path Qwen/Qwen3.5-9B --host 0.0.0.0 --port 8000 --tp-size 1 --dtype auto --enable-metrics --mem-fraction-static 0.9 --context-length 262144 --max-running-requests 256 --max-prefill-tokens 8192 --chunked-prefill-size 8192 --mamba-scheduler-strategy extra_buffer --speculative-eagle-topk 1 --speculative-algorithm NEXTN --speculative-num-steps 3 --reasoning-parser qwen3 --tool-call-parser qwen3_coder
+10:36:59 INFO  [inference_agent.nodes.executor] Container started: 8fa75eb80481
+10:36:59 INFO  [inference_agent.nodes.executor] Waiting for engine health check...
+10:37:54 ERROR [inference_agent.utils.docker] Container 'bench-sglang-154b5e906b02' is no longer running (crashed/OOM?).
+10:37:54 ERROR [inference_agent.nodes.executor] FAILED: Engine did not become healthy. Last logs:
+e 885, in _resolve_memory_pool_config
+    return MemoryPoolConfig(
+           ^^^^^^^^^^^^^^^^^
+  File "<string>", line 8, in __init__
+  File "/sgl-workspace/sglang/python/sglang/srt/model_executor/model_runner_kv_cache_mixin.py", line 60, in __post_init__
+    raise RuntimeError(msg)
+RuntimeError: Not enough memory. Please try to increase --mem-fraction-static. Current value: mem_fraction_static=0.9
+
+[2026-04-24 07:37:34] Received sigquit from a child process. It usually means the child failed.
+
+10:38:03 INFO  [inference_agent.nodes.analyzer] Analysis: The SGLang experiment with NEXTN speculative decoding failed completely, providing no performance da | classification=none | decision=continue | next_goal=explore
+10:38:03 INFO  [inference_agent.nodes.reporter] Saved experiment result to ./experiments/154b5e906b02.json
+10:38:03 INFO  [inference_agent.nodes.planner] Asking LLM to plan experiment #14...
+10:38:38 INFO  [inference_agent.nodes.planner] Planned: sglang, TP=1, ctx=16384, quant=none, rationale: Testing SGLang with NEXTN speculative decoding (MTP) as requested by user. Using conservative max_model_len=16384 to avo
+10:38:38 INFO  [inference_agent.nodes.executor] 
+10:38:38 INFO  [inference_agent.nodes.executor] ============================================================
+10:38:38 INFO  [inference_agent.nodes.executor] EXPERIMENT 14/30: 8f4e41e2e993 | SGLANG | TP=1 | quant=none
+10:38:38 INFO  [inference_agent.nodes.executor] Rationale: Testing SGLang with NEXTN speculative decoding (MTP) as requested by user. Using conservative max_model_len=16384 to avoid previous timeout issues, en
+10:38:38 INFO  [inference_agent.nodes.executor] ============================================================
+10:38:38 INFO  [inference_agent.engines.sglang] NEXTN: bumping mem_fraction_static from 0.85 to 0.90
+10:38:38 INFO  [inference_agent.nodes.executor] Docker command: docker run --name bench-sglang-8f4e41e2e993 --gpus all --shm-size 16g --network host -v /root/.cache/huggingface:/root/.cache/huggingface -d -e SGLANG_ENABLE_SPEC_V2=1 lmsysorg/sglang:latest python3 -m sglang.launch_server --model-path Qwen/Qwen3.5-9B --host 0.0.0.0 --port 8000 --tp-size 1 --dtype auto --enable-metrics --mem-fraction-static 0.9 --context-length 16384 --max-running-requests 256 --max-prefill-tokens 4096 --chunked-prefill-size 8192 --mamba-scheduler-strategy extra_buffer --speculative-eagle-topk 1 --speculative-algorithm NEXTN --speculative-num-steps 3 --reasoning-parser qwen3 --tool-call-parser qwen3_coder
+10:38:39 INFO  [inference_agent.nodes.executor] Container started: b2118d4b9097
+10:38:39 INFO  [inference_agent.nodes.executor] Waiting for engine health check...
+10:39:34 ERROR [inference_agent.utils.docker] Container 'bench-sglang-8f4e41e2e993' is no longer running (crashed/OOM?).
+10:39:34 ERROR [inference_agent.nodes.executor] FAILED: Engine did not become healthy. Last logs:
+e 885, in _resolve_memory_pool_config
+    return MemoryPoolConfig(
+           ^^^^^^^^^^^^^^^^^
+  File "<string>", line 8, in __init__
+  File "/sgl-workspace/sglang/python/sglang/srt/model_executor/model_runner_kv_cache_mixin.py", line 60, in __post_init__
+    raise RuntimeError(msg)
+RuntimeError: Not enough memory. Please try to increase --mem-fraction-static. Current value: mem_fraction_static=0.9
+
+[2026-04-24 07:39:13] Received sigquit from a child process. It usually means the child failed.
+
+10:39:37 INFO  [inference_agent.nodes.analyzer] Analysis: The latest SGLang experiment with NEXTN speculative decoding failed completely, providing no perform | classification=none | decision=continue | next_goal=optimize_throughput
+10:39:37 INFO  [inference_agent.nodes.reporter] Saved experiment result to ./experiments/8f4e41e2e993.json
+10:39:37 INFO  [inference_agent.nodes.planner] Asking LLM to plan experiment #15...
+10:39:44 INFO  [inference_agent.nodes.planner] Planned: vllm, TP=1, ctx=32768, quant=none, rationale: Testing vLLM with --language-model-only flag to bypass VLM overhead for text-only benchmarks, combined with chunked pref
+10:39:44 INFO  [inference_agent.nodes.executor] 
+10:39:44 INFO  [inference_agent.nodes.executor] ============================================================
+10:39:44 INFO  [inference_agent.nodes.executor] EXPERIMENT 15/30: 19f86582118b | VLLM | TP=1 | quant=none
+10:39:44 INFO  [inference_agent.nodes.executor] Rationale: Testing vLLM with --language-model-only flag to bypass VLM overhead for text-only benchmarks, combined with chunked prefill and prefix caching for max
+10:39:44 INFO  [inference_agent.nodes.executor] ============================================================
+10:39:44 INFO  [inference_agent.nodes.executor] Docker command: docker run --name bench-vllm-19f86582118b --gpus all --shm-size 16g --network host -v /root/.cache/huggingface:/root/.cache/huggingface -d -e SGLANG_ENABLE_SPEC_V2=1 vllm/vllm-openai:latest --model Qwen/Qwen3.5-9B --host 0.0.0.0 --port 8000 --tensor-parallel-size 1 --dtype auto --gpu-memory-utilization 0.95 --max-model-len 32768 --max-num-seqs 512 --max-num-batched-tokens 16384 --enable-chunked-prefill --enable-prefix-caching --language-model-only --enable-auto-tool-choice --tool-call-parser qwen3_coder --reasoning-parser qwen3
+10:39:49 INFO  [inference_agent.nodes.executor] Container started: 4405bf5732b7
+10:39:49 INFO  [inference_agent.nodes.executor] Waiting for engine health check...
+10:40:44 INFO  [inference_agent.utils.docker]   Still waiting for health check... (55s/900s)
+10:41:45 INFO  [inference_agent.utils.docker]   Still waiting for health check... (115s/900s)
+10:42:45 INFO  [inference_agent.utils.docker]   Still waiting for health check... (175s/900s)
+10:43:45 INFO  [inference_agent.utils.docker]   Still waiting for health check... (236s/900s)
+10:44:25 INFO  [inference_agent.utils.docker] Health check passed: http://localhost:8000/health
+10:44:25 INFO  [inference_agent.nodes.executor] Engine is healthy! Starting benchmark...
+10:44:25 INFO  [inference_agent.benchmark.runner] Skipping long_context_32k (c=1, p=32768): exceeds context 32768
+10:44:25 INFO  [inference_agent.benchmark.runner] Skipping long_context_32k (c=4, p=32768): exceeds context 32768
+10:44:25 INFO  [inference_agent.benchmark.runner] Skipping long_context_64k (c=1, p=65536): exceeds context 32768
+10:44:25 INFO  [inference_agent.benchmark.runner] Skipping long_context_64k (c=4, p=65536): exceeds context 32768
+10:44:25 INFO  [inference_agent.benchmark.runner] Skipping long_context_100k (c=1, p=100000): exceeds context 32768
+10:44:25 INFO  [inference_agent.benchmark.runner] Skipping long_context_100k (c=2, p=100000): exceeds context 32768
+10:44:25 INFO  [inference_agent.nodes.executor]   Phase: warmup (c=1, prompt=512, max_out=128, dur=10s)
+10:44:37 INFO  [inference_agent.nodes.executor]   Phase: latency (c=1, prompt=128, max_out=256, dur=60s)
+10:45:38 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=1, prompt_len=128, requests=16, throughput=66.4 tok/s, ttft_p95=489.5 ms, errors=0
+10:45:38 INFO  [inference_agent.nodes.executor]   Phase: latency (c=1, prompt=512, max_out=256, dur=60s)
+10:46:39 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=1, prompt_len=512, requests=16, throughput=66.2 tok/s, ttft_p95=60.6 ms, errors=0
+10:46:39 INFO  [inference_agent.nodes.executor]   Phase: latency (c=1, prompt=2048, max_out=256, dur=60s)
+10:47:39 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=1, prompt_len=2048, requests=16, throughput=66.9 tok/s, ttft_p95=533.7 ms, errors=0
+10:47:39 INFO  [inference_agent.nodes.executor]   Phase: latency (c=1, prompt=4096, max_out=256, dur=60s)
+10:48:40 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=1, prompt_len=4096, requests=16, throughput=66.1 tok/s, ttft_p95=167.5 ms, errors=0
+10:48:40 INFO  [inference_agent.nodes.executor]   Phase: mid_throughput (c=4, prompt=512, max_out=256, dur=60s)
+10:49:41 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=4, prompt_len=512, requests=64, throughput=266.7 tok/s, ttft_p95=148.4 ms, errors=0
+10:49:41 INFO  [inference_agent.nodes.executor]   Phase: mid_throughput (c=4, prompt=2048, max_out=256, dur=60s)
+10:50:43 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=4, prompt_len=2048, requests=60, throughput=246.5 tok/s, ttft_p95=133.8 ms, errors=0
+10:50:43 INFO  [inference_agent.nodes.executor]   Phase: mid_throughput (c=16, prompt=512, max_out=256, dur=60s)
+10:51:46 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=16, prompt_len=512, requests=224, throughput=904.7 tok/s, ttft_p95=495.9 ms, errors=0
+10:51:46 INFO  [inference_agent.nodes.executor]   Phase: mid_throughput (c=16, prompt=2048, max_out=256, dur=60s)
+10:52:49 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=16, prompt_len=2048, requests=224, throughput=904.6 tok/s, ttft_p95=395.1 ms, errors=0
+10:52:49 INFO  [inference_agent.nodes.executor]   Phase: mid_throughput (c=64, prompt=512, max_out=256, dur=60s)
+10:53:53 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=64, prompt_len=512, requests=576, throughput=2270.8 tok/s, ttft_p95=1907.4 ms, errors=0
+10:53:53 INFO  [inference_agent.nodes.executor]   Phase: mid_throughput (c=64, prompt=2048, max_out=256, dur=60s)
+10:54:57 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=64, prompt_len=2048, requests=576, throughput=2268.0 tok/s, ttft_p95=1054.1 ms, errors=0
+10:54:57 INFO  [inference_agent.nodes.executor]   Phase: high_throughput (c=128, prompt=512, max_out=256, dur=60s)
+10:55:58 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=128, prompt_len=512, requests=164776, throughput=0.0 tok/s, ttft_p95=239.2 ms, errors=164648
+10:55:58 INFO  [inference_agent.nodes.executor]   Phase: high_throughput (c=256, prompt=512, max_out=256, dur=60s)
+10:56:58 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=256, prompt_len=512, requests=159015, throughput=0.0 tok/s, ttft_p95=0.0 ms, errors=159015
+10:56:58 INFO  [inference_agent.nodes.executor]   Phase: stress (c=512, prompt=512, max_out=256, dur=60s)
+10:57:58 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=512, prompt_len=512, requests=153050, throughput=0.0 tok/s, ttft_p95=0.0 ms, errors=153050
+10:57:58 INFO  [inference_agent.nodes.executor]   Phase: long_context_16k (c=1, prompt=16384, max_out=8192, dur=60s)
+10:58:58 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=1, prompt_len=16384, requests=164790, throughput=0.0 tok/s, ttft_p95=0.0 ms, errors=164790
+10:58:58 INFO  [inference_agent.nodes.executor]   Phase: long_context_16k (c=4, prompt=16384, max_out=8192, dur=60s)
+10:59:58 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=4, prompt_len=16384, requests=171534, throughput=0.0 tok/s, ttft_p95=0.0 ms, errors=171534
+10:59:58 INFO  [inference_agent.nodes.executor]   Phase: long_context_24k (c=1, prompt=24576, max_out=8192, dur=60s)
+11:00:59 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=1, prompt_len=24576, requests=138501, throughput=0.0 tok/s, ttft_p95=0.0 ms, errors=138501
+11:00:59 INFO  [inference_agent.nodes.executor]   Phase: long_context_24k (c=4, prompt=24576, max_out=8192, dur=60s)
+11:01:59 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=4, prompt_len=24576, requests=139993, throughput=0.0 tok/s, ttft_p95=0.0 ms, errors=139993
+11:01:59 WARNING [inference_agent.utils.metrics] Failed to fetch metrics from http://localhost:8000/metrics: Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]
+11:01:59 INFO  [inference_agent.nodes.executor] Running smoke tests...
+11:01:59 INFO  [inference_agent.benchmark.smoke_tests] Smoke test: tool calling...
+11:01:59 INFO  [inference_agent.benchmark.smoke_tests]   ERROR: Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]
+11:01:59 INFO  [inference_agent.benchmark.smoke_tests] Smoke test: JSON mode...
+11:01:59 INFO  [inference_agent.benchmark.smoke_tests]   ERROR: Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]
+11:01:59 INFO  [inference_agent.benchmark.smoke_tests] Smoke test: JSON schema...
+11:01:59 INFO  [inference_agent.benchmark.smoke_tests]   ERROR: Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]
+11:02:00 INFO  [inference_agent.nodes.executor] Experiment 19f86582118b complete: peak_throughput=2270.8 tok/s, low_ttft_p95=0.0 ms, duration=1336s
+11:02:15 INFO  [inference_agent.nodes.analyzer] Analysis: The latest experiment with vLLM's --language-model-only flag achieved moderate throughput (2270.8) b | classification=none | decision=continue | next_goal=optimize_throughput
+11:02:15 INFO  [inference_agent.nodes.reporter] Saved experiment result to ./experiments/19f86582118b.json
+11:02:15 INFO  [inference_agent.nodes.planner] Asking LLM to plan experiment #16...
+11:03:32 INFO  [inference_agent.nodes.planner] Planned: sglang, TP=1, ctx=16384, quant=none, rationale: Testing SGLang with NEXTN speculative decoding using the model's built-in MTP layers. This is the first experiment with 
+11:03:32 INFO  [inference_agent.nodes.executor] 
+11:03:32 INFO  [inference_agent.nodes.executor] ============================================================
+11:03:32 INFO  [inference_agent.nodes.executor] EXPERIMENT 16/30: 5bcd55192afa | SGLANG | TP=1 | quant=none
+11:03:32 INFO  [inference_agent.nodes.executor] Rationale: Testing SGLang with NEXTN speculative decoding using the model's built-in MTP layers. This is the first experiment with speculative decoding to evalua
+11:03:32 INFO  [inference_agent.nodes.executor] ============================================================
+11:03:32 INFO  [inference_agent.engines.sglang] NEXTN: bumping mem_fraction_static from 0.80 to 0.90
+11:03:32 INFO  [inference_agent.nodes.executor] Docker command: docker run --name bench-sglang-5bcd55192afa --gpus all --shm-size 16g --network host -v /root/.cache/huggingface:/root/.cache/huggingface -d -e SGLANG_ENABLE_SPEC_V2=1 lmsysorg/sglang:latest python3 -m sglang.launch_server --model-path Qwen/Qwen3.5-9B --host 0.0.0.0 --port 8000 --tp-size 1 --dtype auto --enable-metrics --mem-fraction-static 0.9 --context-length 16384 --max-running-requests 256 --max-prefill-tokens 4096 --chunked-prefill-size 0 --mamba-scheduler-strategy extra_buffer --speculative-eagle-topk 1 --num-continuous-decode-steps 2 --speculative-algorithm NEXTN --speculative-num-steps 3 --reasoning-parser qwen3 --tool-call-parser qwen3_coder
+11:03:35 INFO  [inference_agent.nodes.executor] Container started: 2dbfa269f46e
+11:03:35 INFO  [inference_agent.nodes.executor] Waiting for engine health check...
+11:04:30 ERROR [inference_agent.utils.docker] Container 'bench-sglang-5bcd55192afa' is no longer running (crashed/OOM?).
+11:04:30 ERROR [inference_agent.nodes.executor] FAILED: Engine did not become healthy. Last logs:
+e 885, in _resolve_memory_pool_config
+    return MemoryPoolConfig(
+           ^^^^^^^^^^^^^^^^^
+  File "<string>", line 8, in __init__
+  File "/sgl-workspace/sglang/python/sglang/srt/model_executor/model_runner_kv_cache_mixin.py", line 60, in __post_init__
+    raise RuntimeError(msg)
+RuntimeError: Not enough memory. Please try to increase --mem-fraction-static. Current value: mem_fraction_static=0.9
+
+[2026-04-24 08:04:14] Received sigquit from a child process. It usually means the child failed.
+
+11:04:38 INFO  [inference_agent.nodes.analyzer] Analysis: The SGLang experiment with NEXTN speculative decoding failed completely, achieving 0 throughput and  | classification=none | decision=continue | next_goal=optimize_throughput
+11:04:38 INFO  [inference_agent.nodes.reporter] Saved experiment result to ./experiments/5bcd55192afa.json
+11:04:38 INFO  [inference_agent.nodes.planner] Asking LLM to plan experiment #17...
+11:04:51 INFO  [inference_agent.nodes.planner] Planned: vllm, TP=1, ctx=32768, quant=none, rationale: Testing vLLM with --language-model-only flag to evaluate throughput improvement by disabling VLM components, based on us
+11:04:51 INFO  [inference_agent.nodes.executor] 
+11:04:51 INFO  [inference_agent.nodes.executor] ============================================================
+11:04:51 INFO  [inference_agent.nodes.executor] EXPERIMENT 17/30: f0098671d3e7 | VLLM | TP=1 | quant=none
+11:04:51 INFO  [inference_agent.nodes.executor] Rationale: Testing vLLM with --language-model-only flag to evaluate throughput improvement by disabling VLM components, based on user request. Using high memory 
+11:04:51 INFO  [inference_agent.nodes.executor] ============================================================
+11:04:51 INFO  [inference_agent.nodes.executor] Docker command: docker run --name bench-vllm-f0098671d3e7 --gpus all --shm-size 16g --network host -v /root/.cache/huggingface:/root/.cache/huggingface -d vllm/vllm-openai:latest --model Qwen/Qwen3.5-9B --host 0.0.0.0 --port 8000 --tensor-parallel-size 1 --dtype auto --gpu-memory-utilization 0.95 --max-model-len 32768 --max-num-seqs 256 --max-num-batched-tokens 16384 --language-model-only --enable-auto-tool-choice --tool-call-parser qwen3_coder --reasoning-parser qwen3
+11:04:51 INFO  [inference_agent.nodes.executor] Container started: b72cc9f086b9
+11:04:51 INFO  [inference_agent.nodes.executor] Waiting for engine health check...
+11:05:46 INFO  [inference_agent.utils.docker]   Still waiting for health check... (55s/900s)
+11:06:46 INFO  [inference_agent.utils.docker]   Still waiting for health check... (115s/900s)
+11:07:47 INFO  [inference_agent.utils.docker]   Still waiting for health check... (175s/900s)
+11:08:47 INFO  [inference_agent.utils.docker]   Still waiting for health check... (235s/900s)
+11:09:27 INFO  [inference_agent.utils.docker] Health check passed: http://localhost:8000/health
+11:09:27 INFO  [inference_agent.nodes.executor] Engine is healthy! Starting benchmark...
+11:09:27 INFO  [inference_agent.benchmark.runner] Skipping long_context_32k (c=1, p=32768): exceeds context 32768
+11:09:27 INFO  [inference_agent.benchmark.runner] Skipping long_context_32k (c=4, p=32768): exceeds context 32768
+11:09:27 INFO  [inference_agent.benchmark.runner] Skipping long_context_64k (c=1, p=65536): exceeds context 32768
+11:09:27 INFO  [inference_agent.benchmark.runner] Skipping long_context_64k (c=4, p=65536): exceeds context 32768
+11:09:27 INFO  [inference_agent.benchmark.runner] Skipping long_context_100k (c=1, p=100000): exceeds context 32768
+11:09:27 INFO  [inference_agent.benchmark.runner] Skipping long_context_100k (c=2, p=100000): exceeds context 32768
+11:09:27 INFO  [inference_agent.nodes.executor]   Phase: warmup (c=1, prompt=512, max_out=128, dur=10s)
+11:09:38 INFO  [inference_agent.nodes.executor]   Phase: latency (c=1, prompt=128, max_out=256, dur=60s)
+11:10:41 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=1, prompt_len=128, requests=17, throughput=67.8 tok/s, ttft_p95=603.9 ms, errors=0
+11:10:41 INFO  [inference_agent.nodes.executor]   Phase: latency (c=1, prompt=512, max_out=256, dur=60s)
+11:11:44 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=1, prompt_len=512, requests=16, throughput=64.7 tok/s, ttft_p95=270.6 ms, errors=0
+11:11:44 INFO  [inference_agent.nodes.executor]   Phase: latency (c=1, prompt=2048, max_out=256, dur=60s)
+11:12:44 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=1, prompt_len=2048, requests=15, throughput=63.1 tok/s, ttft_p95=1410.9 ms, errors=0
+11:12:44 INFO  [inference_agent.nodes.executor]   Phase: latency (c=1, prompt=4096, max_out=256, dur=60s)
+11:13:46 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=1, prompt_len=4096, requests=15, throughput=59.4 tok/s, ttft_p95=615.5 ms, errors=0
+11:13:46 INFO  [inference_agent.nodes.executor]   Phase: mid_throughput (c=4, prompt=512, max_out=256, dur=60s)
+11:14:48 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=4, prompt_len=512, requests=64, throughput=257.2 tok/s, ttft_p95=167.6 ms, errors=0
+11:14:48 INFO  [inference_agent.nodes.executor]   Phase: mid_throughput (c=4, prompt=2048, max_out=256, dur=60s)
+11:15:52 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=4, prompt_len=2048, requests=60, throughput=241.0 tok/s, ttft_p95=442.1 ms, errors=0
+11:15:52 INFO  [inference_agent.nodes.executor]   Phase: mid_throughput (c=16, prompt=512, max_out=256, dur=60s)
+11:16:53 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=16, prompt_len=512, requests=224, throughput=925.2 tok/s, ttft_p95=449.2 ms, errors=0
+11:16:53 INFO  [inference_agent.nodes.executor]   Phase: mid_throughput (c=16, prompt=2048, max_out=256, dur=60s)
+11:17:54 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=16, prompt_len=2048, requests=229920, throughput=0.0 tok/s, ttft_p95=0.0 ms, errors=229904
+11:17:54 INFO  [inference_agent.nodes.executor]   Phase: mid_throughput (c=64, prompt=512, max_out=256, dur=60s)
+11:18:54 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=64, prompt_len=512, requests=196639, throughput=0.0 tok/s, ttft_p95=0.0 ms, errors=196639
+11:18:54 INFO  [inference_agent.nodes.executor]   Phase: mid_throughput (c=64, prompt=2048, max_out=256, dur=60s)
+11:19:54 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=64, prompt_len=2048, requests=192962, throughput=0.0 tok/s, ttft_p95=0.0 ms, errors=192962
+11:19:54 INFO  [inference_agent.nodes.executor]   Phase: high_throughput (c=128, prompt=512, max_out=256, dur=60s)
+11:20:54 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=128, prompt_len=512, requests=187469, throughput=0.0 tok/s, ttft_p95=0.0 ms, errors=187469
+11:20:54 INFO  [inference_agent.nodes.executor]   Phase: high_throughput (c=256, prompt=512, max_out=256, dur=60s)
+11:21:54 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=256, prompt_len=512, requests=171167, throughput=0.0 tok/s, ttft_p95=0.0 ms, errors=171167
+11:21:55 INFO  [inference_agent.nodes.executor]   Phase: stress (c=512, prompt=512, max_out=256, dur=60s)
+11:22:55 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=512, prompt_len=512, requests=169081, throughput=0.0 tok/s, ttft_p95=0.0 ms, errors=169081
+11:22:55 INFO  [inference_agent.nodes.executor]   Phase: long_context_16k (c=1, prompt=16384, max_out=8192, dur=60s)
+11:23:55 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=1, prompt_len=16384, requests=168427, throughput=0.0 tok/s, ttft_p95=0.0 ms, errors=168427
+11:23:55 INFO  [inference_agent.nodes.executor]   Phase: long_context_16k (c=4, prompt=16384, max_out=8192, dur=60s)
+11:24:55 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=4, prompt_len=16384, requests=166489, throughput=0.0 tok/s, ttft_p95=0.0 ms, errors=166489
+11:24:55 INFO  [inference_agent.nodes.executor]   Phase: long_context_24k (c=1, prompt=24576, max_out=8192, dur=60s)
+11:25:55 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=1, prompt_len=24576, requests=143136, throughput=0.0 tok/s, ttft_p95=0.0 ms, errors=143136
+11:25:55 INFO  [inference_agent.nodes.executor]   Phase: long_context_24k (c=4, prompt=24576, max_out=8192, dur=60s)
+11:26:55 INFO  [inference_agent.benchmark.runner] Phase complete: concurrency=4, prompt_len=24576, requests=145976, throughput=0.0 tok/s, ttft_p95=0.0 ms, errors=145976
+11:26:55 WARNING [inference_agent.utils.metrics] Failed to fetch metrics from http://localhost:8000/metrics: Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]
+11:26:55 INFO  [inference_agent.nodes.executor] Running smoke tests...
+11:26:55 INFO  [inference_agent.benchmark.smoke_tests] Smoke test: tool calling...
+11:26:55 INFO  [inference_agent.benchmark.smoke_tests]   ERROR: Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]
+11:26:55 INFO  [inference_agent.benchmark.smoke_tests] Smoke test: JSON mode...
+11:26:55 INFO  [inference_agent.benchmark.smoke_tests]   ERROR: Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]
+11:26:55 INFO  [inference_agent.benchmark.smoke_tests] Smoke test: JSON schema...
+11:26:55 INFO  [inference_agent.benchmark.smoke_tests]   ERROR: Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]
+11:26:55 INFO  [inference_agent.nodes.executor] Experiment f0098671d3e7 complete: peak_throughput=925.2 tok/s, low_ttft_p95=0.0 ms, duration=1325s
+11:27:09 INFO  [inference_agent.nodes.analyzer] Analysis: The latest experiment using --language-model-only flag achieved a throughput of 925.2, which is sign | classification=none | decision=continue | next_goal=optimize_throughput
+11:27:09 INFO  [inference_agent.nodes.reporter] Saved experiment result to ./experiments/f0098671d3e7.json
+11:27:09 INFO  [inference_agent.nodes.planner] Asking LLM to plan experiment #18...
+11:27:17 INFO  [inference_agent.nodes.planner] Planned: sglang, TP=1, ctx=65536, quant=fp8, rationale: Testing SGLang with NEXTN speculative decoding using the model's built-in MTP layers. This is expected to provide signif
+11:27:17 INFO  [inference_agent.nodes.executor] 
+11:27:17 INFO  [inference_agent.nodes.executor] ============================================================
+11:27:17 INFO  [inference_agent.nodes.executor] EXPERIMENT 18/30: bc2a2fd095b1 | SGLANG | TP=1 | quant=fp8
+11:27:17 INFO  [inference_agent.nodes.executor] Rationale: Testing SGLang with NEXTN speculative decoding using the model's built-in MTP layers. This is expected to provide significant throughput gains (1.5-2x
+11:27:17 INFO  [inference_agent.nodes.executor] ============================================================
+11:27:17 INFO  [inference_agent.engines.sglang] NEXTN: bumping mem_fraction_static from 0.85 to 0.90
+11:27:17 INFO  [inference_agent.nodes.executor] Docker command: docker run --name bench-sglang-bc2a2fd095b1 --gpus all --shm-size 16g --network host -v /root/.cache/huggingface:/root/.cache/huggingface -d -e SGLANG_ENABLE_SPEC_V2=1 lmsysorg/sglang:latest python3 -m sglang.launch_server --model-path Qwen/Qwen3.5-9B --host 0.0.0.0 --port 8000 --tp-size 1 --dtype auto --enable-metrics --mem-fraction-static 0.9 --context-length 65536 --max-running-requests 256 --max-prefill-tokens 8192 --quantization fp8 --schedule-policy lpm --chunked-prefill-size 8192 --mamba-scheduler-strategy extra_buffer --speculative-eagle-topk 1 --num-continuous-decode-steps 2 --speculative-algorithm NEXTN --speculative-num-steps 3 --reasoning-parser qwen3 --tool-call-parser qwen3_coder
+11:27:18 INFO  [inference_agent.nodes.executor] Container started: 911adeaa767d
+11:27:18 INFO  [inference_agent.nodes.executor] Waiting for engine health check...
+11:28:13 ERROR [inference_agent.utils.docker] Container 'bench-sglang-bc2a2fd095b1' is no longer running (crashed/OOM?).
+11:28:13 ERROR [inference_agent.nodes.executor] FAILED: Engine did not become healthy. Last logs:
+in make_ir
+    return ast_to_ttir(self.fn, self, context=context, options=options, codegen_fns=codegen_fns,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+triton.compiler.errors.CompilationError: at 1:0:
+def _per_token_group_quant_8bit(
+^
+ValueError("type fp8e4nv not supported in this architecture. The supported fp8 dtypes are ('fp8e4b15', 'fp8e5')")
+
+[2026-04-24 08:27:52] Received sigquit from a child process. It usually means the child failed.
+
+11:28:24 INFO  [inference_agent.nodes.analyzer] Analysis: The SGLang experiment with NEXTN speculative decoding failed to produce any results, likely due to c | classification=none | decision=continue | next_goal=optimize_throughput
+11:28:24 INFO  [inference_agent.nodes.reporter] Saved experiment result to ./experiments/bc2a2fd095b1.json
+11:28:24 INFO  [inference_agent.nodes.planner] Asking LLM to plan experiment #19...
+11:29:27 INFO  [inference_agent.nodes.planner] Planned: sglang, TP=1, ctx=262144, quant=none, rationale: Testing SGLang with NEXTN speculative decoding using the model's built-in MTP layers. This should provide significant th
+11:29:27 INFO  [inference_agent.nodes.executor] 
+11:29:27 INFO  [inference_agent.nodes.executor] ============================================================
+11:29:27 INFO  [inference_agent.nodes.executor] EXPERIMENT 19/30: fd51b5f15fb4 | SGLANG | TP=1 | quant=none
+11:29:27 INFO  [inference_agent.nodes.executor] Rationale: Testing SGLang with NEXTN speculative decoding using the model's built-in MTP layers. This should provide significant throughput gains for the Qwen3.5
+11:29:27 INFO  [inference_agent.nodes.executor] ============================================================
+11:29:27 INFO  [inference_agent.engines.sglang] NEXTN: bumping mem_fraction_static from 0.80 to 0.90
+11:29:27 INFO  [inference_agent.nodes.executor] Docker command: docker run --name bench-sglang-fd51b5f15fb4 --gpus all --shm-size 16g --network host -v /root/.cache/huggingface:/root/.cache/huggingface -d -e SGLANG_ENABLE_SPEC_V2=1 lmsysorg/sglang:latest python3 -m sglang.launch_server --model-path Qwen/Qwen3.5-9B --host 0.0.0.0 --port 8000 --tp-size 1 --dtype auto --enable-metrics --mem-fraction-static 0.9 --context-length 262144 --max-running-requests 256 --max-prefill-tokens 8192 --schedule-policy lpm --chunked-prefill-size 8192 --mamba-scheduler-strategy extra_buffer --speculative-eagle-topk 1 --num-continuous-decode-steps 2 --speculative-algorithm NEXTN --speculative-num-steps 3 --reasoning-parser qwen3 --tool-call-parser qwen3_coder
+11:29:27 INFO  [inference_agent.nodes.executor] Container started: c608c7119a9e
+11:29:27 INFO  [inference_agent.nodes.executor] Waiting for engine health check...
+11:30:22 ERROR [inference_agent.utils.docker] Container 'bench-sglang-fd51b5f15fb4' is no longer running (crashed/OOM?).
+11:30:22 ERROR [inference_agent.nodes.executor] FAILED: Engine did not become healthy. Last logs:
+e 885, in _resolve_memory_pool_config
+    return MemoryPoolConfig(
+           ^^^^^^^^^^^^^^^^^
+  File "<string>", line 8, in __init__
+  File "/sgl-workspace/sglang/python/sglang/srt/model_executor/model_runner_kv_cache_mixin.py", line 60, in __post_init__
+    raise RuntimeError(msg)
+RuntimeError: Not enough memory. Please try to increase --mem-fraction-static. Current value: mem_fraction_static=0.9
+
+[2026-04-24 08:30:06] Received sigquit from a child process. It usually means the child failed.
+
+11:30:30 INFO  [inference_agent.nodes.analyzer] Analysis: The SGLang experiment with NEXTN speculative decoding failed completely, producing zero throughput a | classification=none | decision=continue | next_goal=explore
+11:30:30 INFO  [inference_agent.nodes.reporter] Saved experiment result to ./experiments/fd51b5f15fb4.json
+11:30:30 INFO  [inference_agent.nodes.planner] Asking LLM to plan experiment #20...
+11:31:00 INFO  [inference_agent.nodes.planner] Planned: sglang, TP=1, ctx=16384, quant=none, rationale: Testing SGLang with NEXTN speculative decoding using the model's built-in MTP layers. This leverages the has_mtp=true ca
+11:31:00 INFO  [inference_agent.nodes.executor] 
+11:31:00 INFO  [inference_agent.nodes.executor] ============================================================
+11:31:00 INFO  [inference_agent.nodes.executor] EXPERIMENT 20/30: a01c052fd8ce | SGLANG | TP=1 | quant=none
+11:31:00 INFO  [inference_agent.nodes.executor] Rationale: Testing SGLang with NEXTN speculative decoding using the model's built-in MTP layers. This leverages the has_mtp=true capability. Using conservative s
+11:31:00 INFO  [inference_agent.nodes.executor] ============================================================
+11:31:00 INFO  [inference_agent.engines.sglang] NEXTN: bumping mem_fraction_static from 0.85 to 0.90
+11:31:00 INFO  [inference_agent.nodes.executor] Docker command: docker run --name bench-sglang-a01c052fd8ce --gpus all --shm-size 16g --network host -v /root/.cache/huggingface:/root/.cache/huggingface -d -e SGLANG_ENABLE_SPEC_V2=1 lmsysorg/sglang:latest python3 -m sglang.launch_server --model-path Qwen/Qwen3.5-9B --host 0.0.0.0 --port 8000 --tp-size 1 --dtype auto --enable-metrics --mem-fraction-static 0.9 --context-length 16384 --max-running-requests 128 --max-prefill-tokens 4096 --schedule-policy lpm --chunked-prefill-size 4096 --mamba-scheduler-strategy extra_buffer --speculative-eagle-topk 1 --num-continuous-decode-steps 2 --speculative-algorithm NEXTN --speculative-num-steps 3 --reasoning-parser qwen3 --tool-call-parser qwen3_coder
+11:31:01 INFO  [inference_agent.nodes.executor] Container started: e5c44ce88da9
+11:31:01 INFO  [inference_agent.nodes.executor] Waiting for engine health check...
+11:31:56 ERROR [inference_agent.utils.docker] Container 'bench-sglang-a01c052fd8ce' is no longer running (crashed/OOM?).
+11:31:56 ERROR [inference_agent.nodes.executor] FAILED: Engine did not become healthy. Last logs:
+e 885, in _resolve_memory_pool_config
+    return MemoryPoolConfig(
+           ^^^^^^^^^^^^^^^^^
+  File "<string>", line 8, in __init__
+  File "/sgl-workspace/sglang/python/sglang/srt/model_executor/model_runner_kv_cache_mixin.py", line 60, in __post_init__
+    raise RuntimeError(msg)
+RuntimeError: Not enough memory. Please try to increase --mem-fraction-static. Current value: mem_fraction_static=0.9
+
+[2026-04-24 08:31:33] Received sigquit from a child process. It usually means the child failed.
+
+11:32:15 INFO  [inference_agent.nodes.analyzer] Analysis: The latest SGLang experiment failed completely, providing no performance data. This continues a patt | classification=none | decision=continue | next_goal=optimize_throughput
+11:32:15 INFO  [inference_agent.nodes.reporter] Saved experiment result to ./experiments/a01c052fd8ce.json
+11:32:15 INFO  [inference_agent.nodes.planner] Asking LLM to plan experiment #21...
+11:32:31 INFO  [inference_agent.nodes.planner] Planned: sglang, TP=1, ctx=262144, quant=none, rationale: Testing SGLang with NEXTN speculative decoding using the model's built-in MTP layers. This should provide significant th
+11:32:31 INFO  [inference_agent.nodes.executor] 
+11:32:31 INFO  [inference_agent.nodes.executor] ============================================================
+11:32:31 INFO  [inference_agent.nodes.executor] EXPERIMENT 21/30: 1d271a99cf35 | SGLANG | TP=1 | quant=none
+11:32:31 INFO  [inference_agent.nodes.executor] Rationale: Testing SGLang with NEXTN speculative decoding using the model's built-in MTP layers. This should provide significant throughput gains for the Qwen3.5
+11:32:31 INFO  [inference_agent.nodes.executor] ============================================================
+11:32:31 INFO  [inference_agent.engines.sglang] NEXTN: bumping mem_fraction_static from 0.80 to 0.90
+11:32:31 INFO  [inference_agent.nodes.executor] Docker command: docker run --name bench-sglang-1d271a99cf35 --gpus all --shm-size 16g --network host -v /root/.cache/huggingface:/root/.cache/huggingface -d -e SGLANG_ENABLE_SPEC_V2=1 lmsysorg/sglang:latest python3 -m sglang.launch_server --model-path Qwen/Qwen3.5-9B --host 0.0.0.0 --port 8000 --tp-size 1 --dtype auto --enable-metrics --mem-fraction-static 0.9 --context-length 262144 --max-running-requests 256 --max-prefill-tokens 8192 --schedule-policy lpm --chunked-prefill-size 8192 --mamba-scheduler-strategy extra_buffer --speculative-eagle-topk 1 --num-continuous-decode-steps 2 --speculative-algorithm NEXTN --speculative-num-steps 3 --reasoning-parser qwen3 --tool-call-parser qwen3_coder
+11:32:31 INFO  [inference_agent.nodes.executor] Container started: 07f9fc346558
+11:32:31 INFO  [inference_agent.nodes.executor] Waiting for engine health check...
+11:33:26 ERROR [inference_agent.utils.docker] Container 'bench-sglang-1d271a99cf35' is no longer running (crashed/OOM?).
+11:33:26 ERROR [inference_agent.nodes.executor] FAILED: Engine did not become healthy. Last logs:
+e 885, in _resolve_memory_pool_config
+    return MemoryPoolConfig(
+           ^^^^^^^^^^^^^^^^^
+  File "<string>", line 8, in __init__
+  File "/sgl-workspace/sglang/python/sglang/srt/model_executor/model_runner_kv_cache_mixin.py", line 60, in __post_init__
+    raise RuntimeError(msg)
+RuntimeError: Not enough memory. Please try to increase --mem-fraction-static. Current value: mem_fraction_static=0.9
+
+[2026-04-24 08:33:04] Received sigquit from a child process. It usually means the child failed.
+
+11:33:31 INFO  [inference_agent.nodes.analyzer] Analysis: The SGLang experiment with NEXTN speculative decoding failed completely, providing no throughput or  | classification=none | decision=continue | next_goal=optimize_throughput
+11:33:31 INFO  [inference_agent.nodes.reporter] Saved experiment result to ./experiments/1d271a99cf35.json
+11:33:31 INFO  [inference_agent.nodes.planner] Asking LLM to plan experiment #22...
+11:34:16 INFO  [inference_agent.nodes.planner] Planned: sglang, TP=1, ctx=65536, quant=none, rationale: Testing SGLang with NEXTN speculative decoding using the model's built-in MTP layers as requested by user. This should p
+11:34:16 INFO  [inference_agent.nodes.executor] 
+11:34:16 INFO  [inference_agent.nodes.executor] ============================================================
+11:34:16 INFO  [inference_agent.nodes.executor] EXPERIMENT 22/30: 4b0aa6ce41e2 | SGLANG | TP=1 | quant=none
+11:34:16 INFO  [inference_agent.nodes.executor] Rationale: Testing SGLang with NEXTN speculative decoding using the model's built-in MTP layers as requested by user. This should provide significant throughput 
+11:34:16 INFO  [inference_agent.nodes.executor] ============================================================
+11:34:16 INFO  [inference_agent.engines.sglang] NEXTN: bumping mem_fraction_static from 0.80 to 0.90
+11:34:16 INFO  [inference_agent.nodes.executor] Docker command: docker run --name bench-sglang-4b0aa6ce41e2 --gpus all --shm-size 16g --network host -v /root/.cache/huggingface:/root/.cache/huggingface -d -e SGLANG_ENABLE_SPEC_V2=1 lmsysorg/sglang:latest python3 -m sglang.launch_server --model-path Qwen/Qwen3.5-9B --host 0.0.0.0 --port 8000 --tp-size 1 --dtype auto --enable-metrics --mem-fraction-static 0.9 --context-length 65536 --max-running-requests 256 --max-prefill-tokens 8192 --schedule-policy lpm --chunked-prefill-size 8192 --mamba-scheduler-strategy extra_buffer --speculative-eagle-topk 1 --num-continuous-decode-steps 2 --speculative-algorithm NEXTN --speculative-num-steps 3 --reasoning-parser qwen3 --tool-call-parser qwen3_coder
+11:34:16 INFO  [inference_agent.nodes.executor] Container started: a8b73cabfd8e
+11:34:16 INFO  [inference_agent.nodes.executor] Waiting for engine health check...
+11:35:11 ERROR [inference_agent.utils.docker] Container 'bench-sglang-4b0aa6ce41e2' is no longer running (crashed/OOM?).
+11:35:11 ERROR [inference_agent.nodes.executor] FAILED: Engine did not become healthy. Last logs:
+e 885, in _resolve_memory_pool_config
+    return MemoryPoolConfig(
+           ^^^^^^^^^^^^^^^^^
+  File "<string>", line 8, in __init__
+  File "/sgl-workspace/sglang/python/sglang/srt/model_executor/model_runner_kv_cache_mixin.py", line 60, in __post_init__
+    raise RuntimeError(msg)
+RuntimeError: Not enough memory. Please try to increase --mem-fraction-static. Current value: mem_fraction_static=0.9
+
+[2026-04-24 08:34:48] Received sigquit from a child process. It usually means the child failed.
+
+11:35:33 INFO  [inference_agent.nodes.analyzer] Analysis: The SGLang experiment with NEXTN speculative decoding failed completely, providing zero throughput a | classification=none | decision=stop | next_goal=explore
+11:35:33 INFO  [inference_agent.nodes.reporter] Saved experiment result to ./experiments/4b0aa6ce41e2.json
+
+============================================================
+BENCHMARK COMPLETE
+============================================================
+Experiments run: 22
+Stop reason: The latest experiment failed completely, providing no performance data. This is the second consecutive SGLang failure with NEXTN speculative decoding, suggesting this configuration is fundamentally incompatible or requires different parameters. Given the budget constraints and repeated failures, it's time to stop exploring this path.
+
+=== BEST CONFIGURATIONS ===
+
+Best Throughput: 3023.4 tok/s (experiment: 4d7238f8f98b)
+Best Latency (TTFT p95): 58.5 ms (experiment: b6ddc86bd841)
+Best Balanced: 3023.4 tok/s @ 76.1 ms (experiment: 4d7238f8f98b)
+
+Pareto front: 2 configurations
+  4d7238f8f98b: 3023.4 tok/s, TTFT p95=76.1 ms
+  b6ddc86bd841: 2927.3 tok/s, TTFT p95=58.5 ms
+
+Results saved to: ./experiments/

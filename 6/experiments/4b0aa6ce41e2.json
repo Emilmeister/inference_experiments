@@ -1,0 +1,173 @@
+{
+  "experiment_id": "4b0aa6ce41e2",
+  "timestamp": "2026-04-24T08:35:20.696005+00:00",
+  "engine": "sglang",
+  "model": "Qwen/Qwen3.5-9B",
+  "hardware": {
+    "gpus": [
+      {
+        "index": 0,
+        "name": "NVIDIA A100-PCIE-40GB",
+        "vram_total_mb": 40960,
+        "vram_free_mb": 40339
+      }
+    ],
+    "gpu_count": 1,
+    "nvlink_available": true,
+    "model_name": "Qwen/Qwen3.5-9B",
+    "model_size_params": 7459569664,
+    "model_architecture": "qwen3_5",
+    "model_max_context": 262144,
+    "is_vlm": true,
+    "has_mtp": true,
+    "available_engines": [
+      "vllm",
+      "sglang"
+    ]
+  },
+  "config": {
+    "engine": "sglang",
+    "experiment_id": "4b0aa6ce41e2",
+    "tensor_parallel_size": 1,
+    "pipeline_parallel_size": 1,
+    "data_parallel_size": 1,
+    "max_model_len": 65536,
+    "gpu_memory_utilization": 0.95,
+    "mem_fraction_static": 0.8,
+    "max_num_seqs": 256,
+    "max_running_requests": 256,
+    "max_num_batched_tokens": 16384,
+    "max_prefill_tokens": 8192,
+    "scheduling_policy": "lpm",
+    "quantization": "",
+    "dtype": "auto",
+    "kv_cache_dtype": "auto",
+    "enable_chunked_prefill": true,
+    "chunked_prefill_size": 8192,
+    "enable_prefix_caching": true,
+    "enforce_eager": false,
+    "speculative_algorithm": "NEXTN",
+    "speculative_draft_model": "",
+    "speculative_num_steps": 3,
+    "num_continuous_decode_steps": 2,
+    "dp_size": 1,
+    "extra_engine_args": [
+      "--reasoning-parser",
+      "qwen3",
+      "--speculative-algo",
+      "NEXTN",
+      "--speculative-num-steps",
+      "3",
+      "--speculative-eagle-topk",
+      "1",
+      "--speculative-num-draft-tokens",
+      "4"
+    ],
+    "extra_env": {},
+    "rationale": "Testing SGLang with NEXTN speculative decoding using the model's built-in MTP layers as requested by user. This should provide significant throughput improvements if successful. Using conservative max_model_len (65536) to avoid OOM given previous failures, while enabling all the NEXTN parameters specified by the user."
+  },
+  "status": "failed",
+  "error": "Health check timed out\nLogs: \n==========\n== CUDA ==\n==========\n\nCUDA Version 12.9.1\n\nContainer image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.\n\nThis container image and its contents are governed by the NVIDIA Deep Learning Container License.\nBy pulling and using the container, you accept the terms and conditions of this license:\nhttps://developer.nvidia.com/ngc/nvidia-deep-learning-container-license\n\nA copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.\n\n[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0\n[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0\n[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0\n/sgl-workspace/sglang/python/sglang/launch_server.py:51: UserWarning: 'python -m sglang.launch_server' is still supported, but 'sglang serve' is the recommended entrypoint.\n  Example: sglang serve --model",
+  "benchmark": {
+    "ttft_ms": {
+      "mean": 0.0,
+      "median": 0.0,
+      "p75": 0.0,
+      "p90": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "tpot_ms": {
+      "mean": 0.0,
+      "median": 0.0,
+      "p75": 0.0,
+      "p90": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "itl_ms": {
+      "mean": 0.0,
+      "median": 0.0,
+      "p75": 0.0,
+      "p90": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "e2e_latency_ms": {
+      "mean": 0.0,
+      "median": 0.0,
+      "p75": 0.0,
+      "p90": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "peak_requests_per_sec": 0.0,
+    "peak_output_tokens_per_sec": 0.0,
+    "peak_total_tokens_per_sec": 0.0,
+    "low_concurrency_ttft_p95_ms": 0.0,
+    "low_concurrency_tpot_p95_ms": 0.0,
+    "queue_time_ms": {
+      "mean": 0.0,
+      "median": 0.0,
+      "p75": 0.0,
+      "p90": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "prefill_time_ms": {
+      "mean": 0.0,
+      "median": 0.0,
+      "p75": 0.0,
+      "p90": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "decode_time_ms": {
+      "mean": 0.0,
+      "median": 0.0,
+      "p75": 0.0,
+      "p90": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "kv_cache_usage_percent": 0.0,
+    "prefix_cache_hit_rate": 0.0,
+    "gpu_utilization_percent": [],
+    "gpu_memory_used_mb": [],
+    "gpu_power_draw_watts": [],
+    "gpu_temperature_celsius": [],
+    "concurrency_results": []
+  },
+  "smoke_tests": {
+    "tool_calling": false,
+    "tool_calling_detail": "",
+    "json_mode": false,
+    "json_mode_detail": "",
+    "json_schema": false,
+    "json_schema_detail": ""
+  },
+  "llm_commentary": "The SGLang experiment with NEXTN speculative decoding failed completely, providing zero throughput and no latency measurements. This represents a significant regression compared to the successful VLLM configurations that achieved over 3000 tokens/sec with sub-100ms latency. The failure suggests that either the NEXTN implementation is incompatible with the current setup or requires different configuration parameters.",
+  "optimization_classification": "none",
+  "scores": {
+    "throughput_score": 0.0,
+    "latency_score": 0.0,
+    "balanced_score": 0.0,
+    "is_pareto_optimal": false
+  },
+  "docker_command": "",
+  "duration_seconds": 64.24798059463501
+}

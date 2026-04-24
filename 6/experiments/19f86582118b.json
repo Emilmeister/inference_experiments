@@ -1,0 +1,1646 @@
+{
+  "experiment_id": "19f86582118b",
+  "timestamp": "2026-04-24T08:02:00.165524+00:00",
+  "engine": "vllm",
+  "model": "Qwen/Qwen3.5-9B",
+  "hardware": {
+    "gpus": [
+      {
+        "index": 0,
+        "name": "NVIDIA A100-PCIE-40GB",
+        "vram_total_mb": 40960,
+        "vram_free_mb": 40339
+      }
+    ],
+    "gpu_count": 1,
+    "nvlink_available": true,
+    "model_name": "Qwen/Qwen3.5-9B",
+    "model_size_params": 7459569664,
+    "model_architecture": "qwen3_5",
+    "model_max_context": 262144,
+    "is_vlm": true,
+    "has_mtp": true,
+    "available_engines": [
+      "vllm",
+      "sglang"
+    ]
+  },
+  "config": {
+    "engine": "vllm",
+    "experiment_id": "19f86582118b",
+    "tensor_parallel_size": 1,
+    "pipeline_parallel_size": 1,
+    "data_parallel_size": 1,
+    "max_model_len": 32768,
+    "gpu_memory_utilization": 0.95,
+    "mem_fraction_static": 0.9,
+    "max_num_seqs": 512,
+    "max_running_requests": 512,
+    "max_num_batched_tokens": 16384,
+    "max_prefill_tokens": 8192,
+    "scheduling_policy": "fcfs",
+    "quantization": "",
+    "dtype": "auto",
+    "kv_cache_dtype": "auto",
+    "enable_chunked_prefill": true,
+    "chunked_prefill_size": 4096,
+    "enable_prefix_caching": true,
+    "enforce_eager": false,
+    "speculative_algorithm": "",
+    "speculative_draft_model": "",
+    "speculative_num_steps": 3,
+    "num_continuous_decode_steps": 1,
+    "dp_size": 1,
+    "extra_engine_args": [
+      "--language-model-only"
+    ],
+    "extra_env": {
+      "SGLANG_ENABLE_SPEC_V2": "1"
+    },
+    "rationale": "Testing vLLM with --language-model-only flag to bypass VLM overhead for text-only benchmarks, combined with chunked prefill and prefix caching for maximum throughput optimization."
+  },
+  "status": "success",
+  "error": null,
+  "benchmark": {
+    "ttft_ms": {
+      "mean": 1365.5357892225766,
+      "median": 1473.9242350042332,
+      "p75": 1537.970425997628,
+      "p90": 1720.5874450155534,
+      "p95": 1907.351533009205,
+      "p99": 1909.3243109819014,
+      "min": 71.63765100995079,
+      "max": 1909.8272350092884
+    },
+    "tpot_ms": {
+      "mean": 22.88723641523212,
+      "median": 22.287143349193872,
+      "p75": 22.396687920924954,
+      "p90": 25.907096059819445,
+      "p95": 27.19346745852602,
+      "p99": 27.642911722184166,
+      "min": 21.490504379543427,
+      "max": 28.693217318621
+    },
+    "itl_ms": {
+      "mean": 22.886362113375785,
+      "median": 21.156020986381918,
+      "p75": 21.608068025670946,
+      "p90": 24.053861998254433,
+      "p95": 28.575278003700078,
+      "p99": 63.674136996269226,
+      "min": 0.005131994839757681,
+      "max": 1323.3861049811821
+    },
+    "e2e_latency_ms": {
+      "mean": 7153.430185958922,
+      "median": 7154.12478800863,
+      "p75": 7179.134220001288,
+      "p90": 7325.172589975409,
+      "p95": 7349.928682000609,
+      "p99": 7351.339810993522,
+      "min": 6961.1558280012105,
+      "max": 7352.252848999342
+    },
+    "peak_requests_per_sec": 8.94385652540256,
+    "peak_output_tokens_per_sec": 2270.8079057308546,
+    "peak_total_tokens_per_sec": 6993.164151143407,
+    "low_concurrency_ttft_p95_ms": 0.0,
+    "low_concurrency_tpot_p95_ms": 0.0,
+    "queue_time_ms": {
+      "mean": 0.0,
+      "median": 0.0,
+      "p75": 0.0,
+      "p90": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "prefill_time_ms": {
+      "mean": 0.0,
+      "median": 0.0,
+      "p75": 0.0,
+      "p90": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "decode_time_ms": {
+      "mean": 0.0,
+      "median": 0.0,
+      "p75": 0.0,
+      "p90": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "kv_cache_usage_percent": 0.0,
+    "prefix_cache_hit_rate": 0.0,
+    "gpu_utilization_percent": [
+      83.9038189533239
+    ],
+    "gpu_memory_used_mb": [
+      40284.0
+    ],
+    "gpu_power_draw_watts": [
+      213.7630410183873
+    ],
+    "gpu_temperature_celsius": [
+      69.0
+    ],
+    "concurrency_results": [
+      {
+        "concurrency": 1,
+        "prompt_length": 128,
+        "max_output_tokens": 256,
+        "num_requests": 16,
+        "ttft_ms": {
+          "mean": 75.46192762856663,
+          "median": 48.15584799507633,
+          "p75": 51.79010098800063,
+          "p90": 59.351306001190096,
+          "p95": 489.50873099965975,
+          "p99": 489.50873099965975,
+          "min": 42.72351102554239,
+          "max": 489.50873099965975
+        },
+        "tpot_ms": {
+          "mean": 14.824318418844012,
+          "median": 14.21318716476854,
+          "p75": 15.919077161316372,
+          "p90": 17.255795956817547,
+          "p95": 17.863600492011756,
+          "p99": 17.863600492011756,
+          "min": 14.004166580407935,
+          "max": 17.863600492011756
+        },
+        "itl_ms": {
+          "mean": 14.820606116746815,
+          "median": 14.02280101319775,
+          "p75": 14.155990997096524,
+          "p90": 14.752006012713537,
+          "p95": 18.097041989676654,
+          "p99": 27.582437003729865,
+          "min": 0.007713999366387725,
+          "max": 661.1581079778261
+        },
+        "e2e_latency_ms": {
+          "mean": 3836.2473781871813,
+          "median": 3673.8654860237148,
+          "p75": 4060.6348199944478,
+          "p90": 4448.705747985514,
+          "p95": 4525.301933987066,
+          "p99": 4525.301933987066,
+          "min": 3611.380457994528,
+          "max": 4525.301933987066
+        },
+        "requests_per_sec": 0.2606682617935651,
+        "input_tokens_per_sec": 37.536229698273374,
+        "output_tokens_per_sec": 66.40523969191071,
+        "total_tokens_per_sec": 103.94146939018408,
+        "queue_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "prefill_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "decode_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "errors": 0,
+        "error_details": []
+      },
+      {
+        "concurrency": 1,
+        "prompt_length": 512,
+        "max_output_tokens": 256,
+        "num_requests": 16,
+        "ttft_ms": {
+          "mean": 51.838031999068335,
+          "median": 50.188801978947595,
+          "p75": 54.99704199610278,
+          "p90": 60.514137003337964,
+          "p95": 60.6370710011106,
+          "p99": 60.6370710011106,
+          "min": 45.80622701905668,
+          "max": 60.6370710011106
+        },
+        "tpot_ms": {
+          "mean": 14.960312302850342,
+          "median": 14.285392004008855,
+          "p75": 15.454649322874308,
+          "p90": 17.379632138342526,
+          "p95": 18.31239121335278,
+          "p99": 18.31239121335278,
+          "min": 14.07101640783652,
+          "max": 18.31239121335278
+        },
+        "itl_ms": {
+          "mean": 14.950423319897071,
+          "median": 14.05073600471951,
+          "p75": 14.175012009218335,
+          "p90": 14.86162599758245,
+          "p95": 18.881552008679137,
+          "p99": 35.44980101287365,
+          "min": 0.004689994966611266,
+          "max": 824.1098030121066
+        },
+        "e2e_latency_ms": {
+          "mean": 3805.385251000189,
+          "median": 3639.5652429782785,
+          "p75": 3979.5208369905595,
+          "p90": 4429.242338985205,
+          "p95": 4457.61601702543,
+          "p99": 4457.61601702543,
+          "min": 3633.0164020182565,
+          "max": 4457.61601702543
+        },
+        "requests_per_sec": 0.26278163320650694,
+        "input_tokens_per_sec": 138.74870233303565,
+        "output_tokens_per_sec": 66.23739542011515,
+        "total_tokens_per_sec": 204.9860977531508,
+        "queue_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "prefill_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "decode_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "errors": 0,
+        "error_details": []
+      },
+      {
+        "concurrency": 1,
+        "prompt_length": 2048,
+        "max_output_tokens": 256,
+        "num_requests": 16,
+        "ttft_ms": {
+          "mean": 86.49284556486236,
+          "median": 57.59132601087913,
+          "p75": 64.59083998925053,
+          "p90": 69.34092901065014,
+          "p95": 533.6969500058331,
+          "p99": 533.6969500058331,
+          "min": 45.92613098793663,
+          "max": 533.6969500058331
+        },
+        "tpot_ms": {
+          "mean": 14.667289120604066,
+          "median": 14.234513095289003,
+          "p75": 15.675237337264287,
+          "p90": 15.906886202644493,
+          "p95": 17.247343537804905,
+          "p99": 17.247343537804905,
+          "min": 14.06351337643048,
+          "max": 17.247343537804905
+        },
+        "itl_ms": {
+          "mean": 14.65848276195043,
+          "median": 14.063203998375684,
+          "p75": 14.172984985634685,
+          "p90": 14.364241011207923,
+          "p95": 16.461049992358312,
+          "p99": 25.95560799818486,
+          "min": 0.012122996849939227,
+          "max": 523.3049480011687
+        },
+        "e2e_latency_ms": {
+          "mean": 3785.06646756432,
+          "median": 3653.5986460221466,
+          "p75": 4050.774472998455,
+          "p90": 4120.669953001197,
+          "p95": 4398.439820011845,
+          "p99": 4398.439820011845,
+          "min": 3633.0745189916342,
+          "max": 4398.439820011845
+        },
+        "requests_per_sec": 0.2641922258073775,
+        "input_tokens_per_sec": 545.2927540664272,
+        "output_tokens_per_sec": 66.92319319983132,
+        "total_tokens_per_sec": 612.2159472662585,
+        "queue_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "prefill_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "decode_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "errors": 0,
+        "error_details": []
+      },
+      {
+        "concurrency": 1,
+        "prompt_length": 4096,
+        "max_output_tokens": 256,
+        "num_requests": 16,
+        "ttft_ms": {
+          "mean": 66.29914400218695,
+          "median": 59.557800996117294,
+          "p75": 63.80117600201629,
+          "p90": 69.28108399733901,
+          "p95": 167.4808590032626,
+          "p99": 167.4808590032626,
+          "min": 51.62441899301484,
+          "max": 167.4808590032626
+        },
+        "tpot_ms": {
+          "mean": 14.92668808353848,
+          "median": 14.715373629094815,
+          "p75": 15.606485223557398,
+          "p90": 16.299976473688318,
+          "p95": 16.540148450257405,
+          "p99": 16.540148450257405,
+          "min": 14.13238551764402,
+          "max": 16.540148450257405
+        },
+        "itl_ms": {
+          "mean": 14.921567849920065,
+          "median": 14.131022006040439,
+          "p75": 14.252613007556647,
+          "p90": 14.673217985546216,
+          "p95": 18.023418000666425,
+          "p99": 31.074625003384426,
+          "min": 0.00472800456918776,
+          "max": 469.0498340060003
+        },
+        "e2e_latency_ms": {
+          "mean": 3813.535898874761,
+          "median": 3708.4062449866906,
+          "p75": 4038.2879989920184,
+          "p90": 4105.560989992227,
+          "p95": 4211.600452981656,
+          "p99": 4211.600452981656,
+          "min": 3660.400392021984,
+          "max": 4211.600452981656
+        },
+        "requests_per_sec": 0.2622191946361281,
+        "input_tokens_per_sec": 1078.2453283437587,
+        "output_tokens_per_sec": 66.1120144476338,
+        "total_tokens_per_sec": 1144.3573427913925,
+        "queue_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "prefill_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "decode_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "errors": 0,
+        "error_details": []
+      },
+      {
+        "concurrency": 4,
+        "prompt_length": 512,
+        "max_output_tokens": 256,
+        "num_requests": 64,
+        "ttft_ms": {
+          "mean": 131.48571194960823,
+          "median": 135.7616820023395,
+          "p75": 140.11387797654606,
+          "p90": 142.57386699318886,
+          "p95": 148.39972599293105,
+          "p99": 150.7244289969094,
+          "min": 97.19445498194546,
+          "max": 150.7244289969094
+        },
+        "tpot_ms": {
+          "mean": 14.538452951922784,
+          "median": 14.404789811045145,
+          "p75": 14.576693663955666,
+          "p90": 14.702849664008466,
+          "p95": 16.315018374438363,
+          "p99": 16.411288753017754,
+          "min": 14.227741380454972,
+          "max": 16.411288753017754
+        },
+        "itl_ms": {
+          "mean": 14.533436216573318,
+          "median": 14.210872002877295,
+          "p75": 14.346604992169887,
+          "p90": 14.830116007942706,
+          "p95": 18.029343016678467,
+          "p99": 29.3730300036259,
+          "min": 0.004865025402978063,
+          "max": 248.19464798201807
+        },
+        "e2e_latency_ms": {
+          "mean": 3799.400099543618,
+          "median": 3768.2925279950723,
+          "p75": 3780.609572015237,
+          "p90": 3860.824667994166,
+          "p95": 4106.63024301175,
+          "p99": 4107.470222981647,
+          "min": 3756.058448983822,
+          "max": 4107.470222981647
+        },
+        "requests_per_sec": 1.0527173197603712,
+        "input_tokens_per_sec": 555.8347448334761,
+        "output_tokens_per_sec": 266.7322508942841,
+        "total_tokens_per_sec": 822.5669957277602,
+        "queue_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "prefill_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "decode_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "errors": 0,
+        "error_details": []
+      },
+      {
+        "concurrency": 4,
+        "prompt_length": 2048,
+        "max_output_tokens": 256,
+        "num_requests": 60,
+        "ttft_ms": {
+          "mean": 101.1940688501151,
+          "median": 95.28019500430673,
+          "p75": 108.28334398684092,
+          "p90": 123.96309798350558,
+          "p95": 133.7634029914625,
+          "p99": 134.25626599928364,
+          "min": 82.43510100874119,
+          "max": 134.25626599928364
+        },
+        "tpot_ms": {
+          "mean": 15.886725808842243,
+          "median": 14.71576118435455,
+          "p75": 17.881158459673433,
+          "p90": 18.11850009024983,
+          "p95": 20.911674207879923,
+          "p99": 20.940234729399283,
+          "min": 14.354055665349074,
+          "max": 20.940234729399283
+        },
+        "itl_ms": {
+          "mean": 15.888167179223807,
+          "median": 14.258967014029622,
+          "p75": 14.393783989362419,
+          "p90": 15.09649699437432,
+          "p95": 19.214207015465945,
+          "p99": 42.160772980423644,
+          "min": 0.004793982952833176,
+          "max": 778.5545990045648
+        },
+        "e2e_latency_ms": {
+          "mean": 4121.470240683993,
+          "median": 3810.140321002109,
+          "p75": 4531.3154039904475,
+          "p90": 4723.393837019103,
+          "p95": 5466.522189992247,
+          "p99": 5466.93586098263,
+          "min": 3731.8449759914074,
+          "max": 5466.93586098263
+        },
+        "requests_per_sec": 0.9704551191454039,
+        "input_tokens_per_sec": 2003.0193659161137,
+        "output_tokens_per_sec": 246.5279487669041,
+        "total_tokens_per_sec": 2249.5473146830177,
+        "queue_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "prefill_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "decode_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "errors": 0,
+        "error_details": []
+      },
+      {
+        "concurrency": 16,
+        "prompt_length": 512,
+        "max_output_tokens": 256,
+        "num_requests": 224,
+        "ttft_ms": {
+          "mean": 428.50516445105313,
+          "median": 440.70690401713364,
+          "p75": 448.9253609790467,
+          "p90": 475.4137819982134,
+          "p95": 495.9068209864199,
+          "p99": 497.03264600248076,
+          "min": 108.87166499742307,
+          "max": 497.2838719841093
+        },
+        "tpot_ms": {
+          "mean": 16.058735157725827,
+          "median": 15.756451913341696,
+          "p75": 16.089402222727813,
+          "p90": 17.164933186275167,
+          "p95": 17.56575892156666,
+          "p99": 17.570493545031685,
+          "min": 15.539878713738576,
+          "max": 18.736420545097
+        },
+        "itl_ms": {
+          "mean": 16.05630106955747,
+          "median": 15.568391012493521,
+          "p75": 15.760187001433223,
+          "p90": 16.462528990814462,
+          "p95": 20.024830009788275,
+          "p99": 34.56018600263633,
+          "min": 0.00472497777082026,
+          "max": 490.5792030040175
+        },
+        "e2e_latency_ms": {
+          "mean": 4480.456645219029,
+          "median": 4428.896387020359,
+          "p75": 4443.36449902039,
+          "p90": 4676.541860011639,
+          "p95": 4921.9489130191505,
+          "p99": 4922.243378008716,
+          "min": 4410.711906006327,
+          "max": 4922.278960002586
+        },
+        "requests_per_sec": 3.570866496830398,
+        "input_tokens_per_sec": 1885.4175103264502,
+        "output_tokens_per_sec": 904.7045331612444,
+        "total_tokens_per_sec": 2790.1220434876946,
+        "queue_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "prefill_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "decode_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "errors": 0,
+        "error_details": []
+      },
+      {
+        "concurrency": 16,
+        "prompt_length": 2048,
+        "max_output_tokens": 256,
+        "num_requests": 224,
+        "ttft_ms": {
+          "mean": 237.13630948727118,
+          "median": 247.40323598962277,
+          "p75": 273.0518500029575,
+          "p90": 303.416365000885,
+          "p95": 395.070433994988,
+          "p99": 395.80895099788904,
+          "min": 62.967392994323745,
+          "max": 396.3739599857945
+        },
+        "tpot_ms": {
+          "mean": 16.80777407702936,
+          "median": 16.181970776853696,
+          "p75": 17.84933505102755,
+          "p90": 18.422837235266343,
+          "p95": 18.993658580002375,
+          "p99": 19.29342108332859,
+          "min": 15.736698796150877,
+          "max": 19.394433892831863
+        },
+        "itl_ms": {
+          "mean": 16.806160172696732,
+          "median": 15.747571975225583,
+          "p75": 15.937849995680153,
+          "p90": 17.274270998314023,
+          "p95": 21.56378299696371,
+          "p99": 49.43028200068511,
+          "min": 0.004547997377812862,
+          "max": 513.1221239862498
+        },
+        "e2e_latency_ms": {
+          "mean": 4480.871008340078,
+          "median": 4320.374834991526,
+          "p75": 4789.903600001708,
+          "p90": 4995.445190987084,
+          "p95": 5092.427152005257,
+          "p99": 5093.719936994603,
+          "min": 4216.717616975075,
+          "max": 5093.855272018118
+        },
+        "requests_per_sec": 3.5683082772271466,
+        "input_tokens_per_sec": 7364.98828419683,
+        "output_tokens_per_sec": 904.598008172414,
+        "total_tokens_per_sec": 8269.586292369244,
+        "queue_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "prefill_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "decode_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "errors": 0,
+        "error_details": []
+      },
+      {
+        "concurrency": 64,
+        "prompt_length": 512,
+        "max_output_tokens": 256,
+        "num_requests": 576,
+        "ttft_ms": {
+          "mean": 1365.5357892225766,
+          "median": 1473.9242350042332,
+          "p75": 1537.970425997628,
+          "p90": 1720.5874450155534,
+          "p95": 1907.351533009205,
+          "p99": 1909.3243109819014,
+          "min": 71.63765100995079,
+          "max": 1909.8272350092884
+        },
+        "tpot_ms": {
+          "mean": 22.88723641523212,
+          "median": 22.287143349193872,
+          "p75": 22.396687920924954,
+          "p90": 25.907096059819445,
+          "p95": 27.19346745852602,
+          "p99": 27.642911722184166,
+          "min": 21.490504379543427,
+          "max": 28.693217318621
+        },
+        "itl_ms": {
+          "mean": 22.886362113375785,
+          "median": 21.156020986381918,
+          "p75": 21.608068025670946,
+          "p90": 24.053861998254433,
+          "p95": 28.575278003700078,
+          "p99": 63.674136996269226,
+          "min": 0.005131994839757681,
+          "max": 1323.3861049811821
+        },
+        "e2e_latency_ms": {
+          "mean": 7153.430185958922,
+          "median": 7154.12478800863,
+          "p75": 7179.134220001288,
+          "p90": 7325.172589975409,
+          "p95": 7349.928682000609,
+          "p99": 7351.339810993522,
+          "min": 6961.1558280012105,
+          "max": 7352.252848999342
+        },
+        "requests_per_sec": 8.94385652540256,
+        "input_tokens_per_sec": 4722.356245412552,
+        "output_tokens_per_sec": 2270.8079057308546,
+        "total_tokens_per_sec": 6993.164151143407,
+        "queue_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "prefill_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "decode_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "errors": 0,
+        "error_details": []
+      },
+      {
+        "concurrency": 64,
+        "prompt_length": 2048,
+        "max_output_tokens": 256,
+        "num_requests": 576,
+        "ttft_ms": {
+          "mean": 636.1784944977748,
+          "median": 694.424526009243,
+          "p75": 809.1519529989455,
+          "p90": 976.7268289870117,
+          "p95": 1054.0714579983614,
+          "p99": 1058.4614849940408,
+          "min": 89.34045399655588,
+          "max": 1059.2095569882076
+        },
+        "tpot_ms": {
+          "mean": 25.77232008194324,
+          "median": 24.234682564651045,
+          "p75": 25.90601748819408,
+          "p90": 36.98394457711157,
+          "p95": 38.227745063332364,
+          "p99": 38.812615596822724,
+          "min": 22.149593604769073,
+          "max": 39.172523130438194
+        },
+        "itl_ms": {
+          "mean": 25.765062020686,
+          "median": 22.13246197788976,
+          "p75": 22.567977983271703,
+          "p90": 25.552942999638617,
+          "p95": 31.97366598760709,
+          "p99": 99.54770200420171,
+          "min": 0.005189998773857951,
+          "max": 791.9283800001722
+        },
+        "e2e_latency_ms": {
+          "mean": 7143.269345976117,
+          "median": 6650.803260010434,
+          "p75": 7297.309437999502,
+          "p90": 10016.368656011764,
+          "p95": 10100.802208995447,
+          "p99": 10101.41458499129,
+          "min": 6300.788334017852,
+          "max": 10101.490183995338
+        },
+        "requests_per_sec": 8.94474254545778,
+        "input_tokens_per_sec": 18461.948613824858,
+        "output_tokens_per_sec": 2267.9736363480424,
+        "total_tokens_per_sec": 20729.922250172902,
+        "queue_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "prefill_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "decode_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "errors": 0,
+        "error_details": []
+      },
+      {
+        "concurrency": 128,
+        "prompt_length": 512,
+        "max_output_tokens": 256,
+        "num_requests": 164776,
+        "ttft_ms": {
+          "mean": 239.1669320059009,
+          "median": 239.1669320059009,
+          "p75": 239.1669320059009,
+          "p90": 239.1669320059009,
+          "p95": 239.1669320059009,
+          "p99": 239.1669320059009,
+          "min": 239.1669320059009,
+          "max": 239.1669320059009
+        },
+        "tpot_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "itl_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "e2e_latency_ms": {
+          "mean": 2341.029245802929,
+          "median": 2342.6987439743243,
+          "p75": 2347.204752994003,
+          "p90": 2349.633175996132,
+          "p95": 2351.912517013261,
+          "p99": 2353.0362540041097,
+          "min": 2319.6996320039034,
+          "max": 2427.225991996238
+        },
+        "requests_per_sec": 2.127280470316234,
+        "input_tokens_per_sec": 1123.2040883269715,
+        "output_tokens_per_sec": 0.016619378674345577,
+        "total_tokens_per_sec": 1123.2207077056457,
+        "queue_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "prefill_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "decode_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "errors": 164648,
+        "error_details": [
+          "HTTP 500: {\"error\":{\"message\":\"EngineCore encountered an issue. See stack trace (above) for the root cause.\",\"type\":\"InternalServerError\",\"param\":null,\"code\":500}}",
+          "HTTP 500: {\"error\":{\"message\":\"EngineCore encountered an issue. See stack trace (above) for the root cause.\",\"type\":\"InternalServerError\",\"param\":null,\"code\":500}}",
+          "HTTP 500: {\"error\":{\"message\":\"EngineCore encountered an issue. See stack trace (above) for the root cause.\",\"type\":\"InternalServerError\",\"param\":null,\"code\":500}}",
+          "HTTP 500: {\"error\":{\"message\":\"EngineCore encountered an issue. See stack trace (above) for the root cause.\",\"type\":\"InternalServerError\",\"param\":null,\"code\":500}}",
+          "HTTP 500: {\"error\":{\"message\":\"EngineCore encountered an issue. See stack trace (above) for the root cause.\",\"type\":\"InternalServerError\",\"param\":null,\"code\":500}}",
+          "HTTP 500: {\"error\":{\"message\":\"EngineCore encountered an issue. See stack trace (above) for the root cause.\",\"type\":\"InternalServerError\",\"param\":null,\"code\":500}}",
+          "HTTP 500: {\"error\":{\"message\":\"EngineCore encountered an issue. See stack trace (above) for the root cause.\",\"type\":\"InternalServerError\",\"param\":null,\"code\":500}}",
+          "HTTP 500: {\"error\":{\"message\":\"EngineCore encountered an issue. See stack trace (above) for the root cause.\",\"type\":\"InternalServerError\",\"param\":null,\"code\":500}}",
+          "HTTP 500: {\"error\":{\"message\":\"EngineCore encountered an issue. See stack trace (above) for the root cause.\",\"type\":\"InternalServerError\",\"param\":null,\"code\":500}}",
+          "HTTP 500: {\"error\":{\"message\":\"EngineCore encountered an issue. See stack trace (above) for the root cause.\",\"type\":\"InternalServerError\",\"param\":null,\"code\":500}}"
+        ]
+      },
+      {
+        "concurrency": 256,
+        "prompt_length": 512,
+        "max_output_tokens": 256,
+        "num_requests": 159015,
+        "ttft_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "tpot_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "itl_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "e2e_latency_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "requests_per_sec": 0.0,
+        "input_tokens_per_sec": 0.0,
+        "output_tokens_per_sec": 0.0,
+        "total_tokens_per_sec": 0.0,
+        "queue_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "prefill_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "decode_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "errors": 159015,
+        "error_details": [
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]"
+        ]
+      },
+      {
+        "concurrency": 512,
+        "prompt_length": 512,
+        "max_output_tokens": 256,
+        "num_requests": 153050,
+        "ttft_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "tpot_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "itl_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "e2e_latency_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "requests_per_sec": 0.0,
+        "input_tokens_per_sec": 0.0,
+        "output_tokens_per_sec": 0.0,
+        "total_tokens_per_sec": 0.0,
+        "queue_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "prefill_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "decode_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "errors": 153050,
+        "error_details": [
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]"
+        ]
+      },
+      {
+        "concurrency": 1,
+        "prompt_length": 16384,
+        "max_output_tokens": 8192,
+        "num_requests": 164790,
+        "ttft_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "tpot_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "itl_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "e2e_latency_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "requests_per_sec": 0.0,
+        "input_tokens_per_sec": 0.0,
+        "output_tokens_per_sec": 0.0,
+        "total_tokens_per_sec": 0.0,
+        "queue_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "prefill_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "decode_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "errors": 164790,
+        "error_details": [
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]"
+        ]
+      },
+      {
+        "concurrency": 4,
+        "prompt_length": 16384,
+        "max_output_tokens": 8192,
+        "num_requests": 171534,
+        "ttft_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "tpot_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "itl_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "e2e_latency_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "requests_per_sec": 0.0,
+        "input_tokens_per_sec": 0.0,
+        "output_tokens_per_sec": 0.0,
+        "total_tokens_per_sec": 0.0,
+        "queue_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "prefill_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "decode_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "errors": 171534,
+        "error_details": [
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]"
+        ]
+      },
+      {
+        "concurrency": 1,
+        "prompt_length": 24576,
+        "max_output_tokens": 8192,
+        "num_requests": 138501,
+        "ttft_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "tpot_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "itl_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "e2e_latency_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "requests_per_sec": 0.0,
+        "input_tokens_per_sec": 0.0,
+        "output_tokens_per_sec": 0.0,
+        "total_tokens_per_sec": 0.0,
+        "queue_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "prefill_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "decode_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "errors": 138501,
+        "error_details": [
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]"
+        ]
+      },
+      {
+        "concurrency": 4,
+        "prompt_length": 24576,
+        "max_output_tokens": 8192,
+        "num_requests": 139993,
+        "ttft_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "tpot_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "itl_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "e2e_latency_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "requests_per_sec": 0.0,
+        "input_tokens_per_sec": 0.0,
+        "output_tokens_per_sec": 0.0,
+        "total_tokens_per_sec": 0.0,
+        "queue_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "prefill_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "decode_time_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "errors": 139993,
+        "error_details": [
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+          "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]"
+        ]
+      }
+    ]
+  },
+  "smoke_tests": {
+    "tool_calling": false,
+    "tool_calling_detail": "ERROR: Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+    "json_mode": false,
+    "json_mode_detail": "ERROR: Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]",
+    "json_schema": false,
+    "json_schema_detail": "ERROR: Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]"
+  },
+  "llm_commentary": "The latest experiment with vLLM's --language-model-only flag achieved moderate throughput (2270.8) but failed to beat the top performers. The 0.0ms TTFT appears to be a measurement error given the failed smoke tests. The configuration with chunked prefill and prefix caching didn't provide the expected throughput boost.",
+  "optimization_classification": "none",
+  "scores": {
+    "throughput_score": 0.7510661021998415,
+    "latency_score": 0.0,
+    "balanced_score": 0.0,
+    "is_pareto_optimal": false
+  },
+  "docker_command": "docker run --name bench-vllm-19f86582118b --gpus all --shm-size 16g --network host -v /root/.cache/huggingface:/root/.cache/huggingface -d -e SGLANG_ENABLE_SPEC_V2=1 vllm/vllm-openai:latest --model Qwen/Qwen3.5-9B --host 0.0.0.0 --port 8000 --tensor-parallel-size 1 --dtype auto --gpu-memory-utilization 0.95 --max-model-len 32768 --max-num-seqs 512 --max-num-batched-tokens 16384 --enable-chunked-prefill --enable-prefix-caching --language-model-only --enable-auto-tool-choice --tool-call-parser qwen3_coder --reasoning-parser qwen3",
+  "duration_seconds": 1335.6187536716461
+}
